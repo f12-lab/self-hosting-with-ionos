@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
       apt-get update
       apt-get -y install apache2
       cp -v /vagrant/apache2/apache2.conf /etc/apache2
+      cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
     SHELL
   end
 end

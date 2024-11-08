@@ -56,7 +56,7 @@ This file is inside our folder called apache2 where we will put the apache confi
 server.vm.provision "shell", inline: <<-SHELL
       apt-get update
       apt-get -y install apache2
-      cp -v /vagrant/apache2/apache2.conf
+      cp -v /vagrant/apache2/apache2.conf /etc/apache2
     SHELL
 ```
 
@@ -68,4 +68,17 @@ We need to define a Virtual Host in Apache. Virtual Hosts allow the Apache web s
     ServerAdmin: webmaster@fondomarcador.com
     ServerName: fondomarcador.com
 <VirtualHost>
+```
+
+In our Vagrantfile we need to provision with the Virtual Host configuration inside /etc/apache2/sites-available.
+
+> When you use a2ensite, Apache creates a symlink in sites-enabled, pointing to the file in sites-available. This makes the site active without having to duplicate configurations or modify the file structure.
+
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+      apt-get update
+      apt-get -y install apache2
+      cp -v /vagrant/apache2/apache2.conf /etc/apache2
+      cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
+    SHELL
 ```
