@@ -40,6 +40,7 @@ server.vm.provision "shell", inline: <<-SHELL
 ```
 
 ### Configuring Apache2
+#### Apache2.conf
 Copy apache2.conf from the machine.
 
 > Inside the machine
@@ -57,4 +58,14 @@ server.vm.provision "shell", inline: <<-SHELL
       apt-get -y install apache2
       cp -v /vagrant/apache2/apache2.conf
     SHELL
+```
+
+#### fondomarcador.conf
+We need to define a Virtual Host in Apache. Virtual Hosts allow the Apache web server to host multiple websites or applications on the same machine, differentiating them by their domain name, port, or IP address. This is a simple configuration, later we will include an index.html, pages and more.
+
+```apacheconf
+<VirtualHost *:80>
+    ServerAdmin: webmaster@fondomarcador.com
+    ServerName: fondomarcador.com
+<VirtualHost>
 ```
