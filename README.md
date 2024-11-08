@@ -10,16 +10,16 @@ Inside our router we need to open ports 80 and 443.
 
 We have to go to this web page [IONOS DNS](https://developer.hosting.ionos.es/docs/dns), and we have to click on Authorize, inside we enter our public and private keys that Ionos gave us before, in this way: `public.private`.
 
-![authorize ionos]()
+![authorize ionos](https://github.com/M-L56/self-hosting-with-ionos/blob/d04f37d41a71a642cc8979aa8a331561be4e4a46/images/authorize_ionos.png)
 
 We go down the page until we reach the section of DynDns, in which we clic on Post.
 
-![DynDNS]()
+![DynDNS](https://github.com/M-L56/self-hosting-with-ionos/blob/d04f37d41a71a642cc8979aa8a331561be4e4a46/images/DynDNS.png)
 
 Later we clic on try it out, and we change the default parameters with our own domain. And we will obtain this curl, so we need to create a little program with this script. 
 >This command makes an HTTP POST request to the Ionos DynDNS API in order to configure or update a dynamic DNS service for the specified domains. 
 
-![DynDNS2]()
+![DynDNS2](https://github.com/M-L56/self-hosting-with-ionos/blob/d04f37d41a71a642cc8979aa8a331561be4e4a46/images/DynDNS2.png)
 
 We will have to make the api key be stored in a file . env and that is in . gitignore, so that in our sript we collect from this site the api key so that no one who looks at our repository has access to our ionos.
 
