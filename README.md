@@ -137,9 +137,9 @@ This is a simple configuration on port 80 of the server, later we will include a
 
 ```apacheconf
 <VirtualHost *:80>
-    ServerAdmin: webmaster@fondomarcador.com
-    ServerName: fondomarcador.com
-<VirtualHost>
+    ServerAdmin webmaster@fondomarcador.com
+    ServerName fondomarcador.com
+</VirtualHost>
 ```
 
 In our Vagrantfile we need to provision with the Virtual Host configuration inside `/etc/apache2/sites-available`.
@@ -175,9 +175,9 @@ We need to add the path of the index.html inside the virtual host
 
 ```apacheconf
 <VirtualHost *:80>
-    ServerAdmin: webmaster@fondomarcador.com
-    ServerName: fondomarcador.com
+    ServerAdmin webmaster@fondomarcador.com
+    ServerName fondomarcador.com
 
-    DocumentRoot: /var/www/html
-<VirtualHost>
+    DocumentRoot /var/www/html
+</VirtualHost>
 ```
