@@ -2,9 +2,27 @@
 First of all we need a domain in Ionos to perform the following practice. In this practice we will create a virtual machine that will be our server, then we will provision it with Apache2. We will then bind our domain to the ip using a python script that will start every time we start the vm.
 
 ## Opening ports
-Inside our router we need to open ports 80 and 443
+Inside our router we need to open ports 80 and 443.
 
 ![ports image in router](https://github.com/M-L56/self-hosting-with-ionos/blob/12529c1b2710c5347e13eb959e802d787af783f8/images/ports.png)
+
+## IONOS DynDNS
+
+We have to go to this web page [IONOS DNS](https://developer.hosting.ionos.es/docs/dns), and we have to click on Authorize, inside we enter our public and private keys that Ionos gave us before, in this way: `public.private`.
+
+![authorize ionos]()
+
+We go down the page until we reach the section of DynDns, in which we clic on Post.
+
+![DynDNS]()
+
+Later we clic on try it out, and we change the default parameters with our own domain. And we will obtain this curl, so we need to create a little program with this script. 
+>This command makes an HTTP POST request to the Ionos DynDNS API in order to configure or update a dynamic DNS service for the specified domains. 
+
+![DynDNS2]()
+
+We will have to make the api key be stored in a file . env and that is in . gitignore, so that in our sript we collect from this site the api key so that no one who looks at our repository has access to our ionos.
+
 
 ## Virtual machine creation using Vagrant
 We will create a virtual machine, which will be our server.
@@ -94,6 +112,7 @@ server.vm.provision "shell", inline: <<-SHELL
 #### - Webpages
 We create a folder that inside we create the differents webpages
 1. Index.html
+
 At first I create a simple index.html to test the self-hosting, later I will upgrade to make looks better with the paths of the others webpages. We need to add this file inside `/var/www/html`
 
 ```ruby
