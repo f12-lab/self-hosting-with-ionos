@@ -1,6 +1,11 @@
 # Self hosting with IONOS
 First of all we need a domain in Ionos to perform the following practice. In this practice we will create a virtual machine that will be our server, then we will provision it with Apache2. We will then bind our domain to the ip using a python script that will start every time we start the vm.
 
+## Opening ports
+Inside our router we need to open ports 80 and 443
+
+![ports image in router](https://github.com/m-l56/self-hosting-with-ionos/images/ports.png)
+
 ## Virtual machine creation using Vagrant
 We will create a virtual machine, which will be our server.
 
@@ -61,7 +66,10 @@ server.vm.provision "shell", inline: <<-SHELL
 ```
 
 #### - fondomarcador.conf
-We need to define a Virtual Host in Apache. Virtual Hosts allow the Apache web server to host multiple websites or applications on the same machine, differentiating them by their domain name, port, or IP address. This is a simple configuration, later we will include an index.html, webpages and more.
+We need to define a Virtual Host in Apache. 
+>Virtual Hosts allow the Apache web server to host multiple websites or applications on the same machine, differentiating them by their domain name, port, or IP address. 
+
+This is a simple configuration on port 80 of the server, later we will include an index.html, webpages and more.
 
 ```apacheconf
 <VirtualHost *:80>
@@ -96,4 +104,15 @@ server.vm.provision "shell", inline: <<-SHELL
       cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
       cp -v /vagrant/apache/webpages/index.html /var/www/html
     SHELL
+```
+
+We need to add the path of the index.html inside the virtual host
+
+```apacheconf
+<VirtualHost *:80>
+    ServerAdmin: webmaster@fondomarcador.com
+    ServerName: fondomarcador.com
+
+    DocumentRoot: /var/www/html
+<VirtualHost>
 ```
