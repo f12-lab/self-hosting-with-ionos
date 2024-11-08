@@ -50,6 +50,16 @@ curl -X 'POST' \
   "description": "My DynamicDns"
 }'
 ```
+
+In the provision of Vagrantfile we need to initialize the server, for this we introduce these two lines:
+>The a2ensite command is used to enable a site configuration file on the Apache web server
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+    sudo a2ensite fondomarcador.conf
+    systemctl restart apache2
+  SHELL
+```
+
 ## Virtual machine creation using Vagrant
 We will create a virtual machine, which will be our server.
 

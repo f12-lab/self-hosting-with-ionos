@@ -15,6 +15,8 @@ Vagrant.configure("2") do |config|
       cp -v /vagrant/apache2/apache2.conf /etc/apache2
       cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
       cp -v /vagrant/apache/webpages/index.html /var/www/html
+      sudo a2ensite fondomarcador.conf
+      systemctl restart apache2
     SHELL
   end
 end
