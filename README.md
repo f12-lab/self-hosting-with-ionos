@@ -4,7 +4,7 @@ First of all we need a domain in Ionos to perform the following practice. In thi
 ## Opening ports
 Inside our router we need to open ports 80 and 443
 
-![ports image in router](https://github.com/m-l56/self-hosting-with-ionos/images/ports.png)
+![ports image in router](https://github.com/m-l56/self-hosting-with-ionos/images/ports.png?raw=true)
 
 ## Virtual machine creation using Vagrant
 We will create a virtual machine, which will be our server.
