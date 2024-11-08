@@ -34,8 +34,27 @@ Has a provisioning with vagrant, where we will install and configure Apache2.
 
 ```ruby
 server.vm.provision "shell", inline: <<-SHELL
+      apt-get update
       apt-get -y install apache2
     SHELL
 ```
 
 ### Configuring Apache2
+Copy apache2.conf from the machine.
+
+> Inside the machine
+>```bash
+>cp /etc/apache2/apache2.conf /vagrant/
+>```
+
+In the provision of Vagrantfile we need to copy this file inside its path. This will be important later, but now we dont change it.
+
+This file is inside our folder called apache2 where we will put the apache configuration files and pages
+
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+      apt-get update
+      apt-get -y install apache2
+      cp -v /vagrant/apache2/apache2.conf
+    SHELL
+```
