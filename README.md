@@ -60,6 +60,16 @@ server.vm.provision "shell", inline: <<-SHELL
   SHELL
 ```
 
+Once created our script, we must pass it to our machine and with the command crontab, which is running every five minutes, this will help us so that there are no problems with the ip.
+
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+    mkdir -p /home/vagrant/scripts
+    cp /vagrant/scripts/DynDNS.sh /home/vagrant/scripts
+    chmod +x /home/vagrant/scripts/DynDNS.sh
+    (crontab -l 2>/dev/null; echo "*/5 * * * * /home/vagrant/scripts/DynDNS.sh") | crontab -
+  SHELL
+```
 ## Virtual machine creation using Vagrant
 We will create a virtual machine, which will be our server.
 

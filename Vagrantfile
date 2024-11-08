@@ -14,6 +14,10 @@ Vagrant.configure("2") do |config|
       cp -v /vagrant/apache2/apache2.conf /etc/apache2
       cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
       cp -v /vagrant/apache2/webpages/index.html /var/www/html
+      mkdir -p /home/vagrant/scripts
+      cp /vagrant/scripts/DynDNS.sh /home/vagrant/scripts
+      chmod +x /home/vagrant/scripts/DynDNS.sh
+      (crontab -l 2>/dev/null; echo "*/5 * * * * /home/vagrant/scripts/DynDNS.sh") | crontab -
       sudo a2ensite fondomarcador.conf
       systemctl restart apache2
     SHELL
