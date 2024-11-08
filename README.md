@@ -14,21 +14,28 @@ end
 ```
 
 ### 2.- Define the server machine
-We give a static IP to our server, and configure port forwarding for http and https. Has a provisioning for ansible, where we will install and configure Apache2.
+We give a static IP to our server, and configure port forwarding for http and https. At first I make insecure my machine to test that is working.
 
 ```ruby
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/bookworm64"
+  config.ssh.insert_key = false
 
   config.vm.define "server" do |server|
     server.vm.network "private_network", ip: "192.168.57.10"
     server.vm.network "forwarded_port", guest: 80, host: 8080
     server.vm.network "forwarded_port", guest: 443, host: 8443
-    server.vm.provision "ansible" do |ansible|
-      ansible.playbook = "playbook.yml"
-    end
   end
 end
 ```
 
 ## Provisioning by vagrant
+Has a provisioning with vagrant, where we will install and configure Apache2.
+
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+      apt-get -y install apache2
+    SHELL
+```
+
+### Configuring Apache2
