@@ -40,7 +40,7 @@ server.vm.provision "shell", inline: <<-SHELL
 ```
 
 ### Configuring Apache2
-#### Apache2.conf
+#### - apache2.conf
 Copy apache2.conf from the machine.
 
 > Inside the machine
@@ -60,8 +60,8 @@ server.vm.provision "shell", inline: <<-SHELL
     SHELL
 ```
 
-#### fondomarcador.conf
-We need to define a Virtual Host in Apache. Virtual Hosts allow the Apache web server to host multiple websites or applications on the same machine, differentiating them by their domain name, port, or IP address. This is a simple configuration, later we will include an index.html, pages and more.
+#### - fondomarcador.conf
+We need to define a Virtual Host in Apache. Virtual Hosts allow the Apache web server to host multiple websites or applications on the same machine, differentiating them by their domain name, port, or IP address. This is a simple configuration, later we will include an index.html, webpages and more.
 
 ```apacheconf
 <VirtualHost *:80>
@@ -70,7 +70,7 @@ We need to define a Virtual Host in Apache. Virtual Hosts allow the Apache web s
 <VirtualHost>
 ```
 
-In our Vagrantfile we need to provision with the Virtual Host configuration inside /etc/apache2/sites-available.
+In our Vagrantfile we need to provision with the Virtual Host configuration inside `/etc/apache2/sites-available`.
 
 > When you use a2ensite, Apache creates a symlink in sites-enabled, pointing to the file in sites-available. This makes the site active without having to duplicate configurations or modify the file structure.
 
@@ -80,5 +80,20 @@ server.vm.provision "shell", inline: <<-SHELL
       apt-get -y install apache2
       cp -v /vagrant/apache2/apache2.conf /etc/apache2
       cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
+    SHELL
+```
+
+#### - Webpages
+We create a folder that inside we create the differents webpages
+1. Index.html
+At first I create a simple index.html to test the self-hosting, later I will upgrade to make looks better with the paths of the others webpages. We need to add this file inside `/var/www/html`
+
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+      apt-get update
+      apt-get -y install apache2
+      cp -v /vagrant/apache2/apache2.conf /etc/apache2
+      cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
+      cp -v /vagrant/apache/webpages/index.html /var/www/html
     SHELL
 ```
