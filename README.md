@@ -21,9 +21,35 @@ Later we clic on try it out, and we change the default parameters with our own d
 
 ![DynDNS2](https://github.com/M-L56/self-hosting-with-ionos/blob/d04f37d41a71a642cc8979aa8a331561be4e4a46/images/DynDNS2.png)
 
-We will have to make the api key be stored in a file . env and that is in . gitignore, so that in our sript we collect from this site the api key so that no one who looks at our repository has access to our ionos.
+We will have to make the api key be stored in a file . env and that is in .gitignore, so that in our sript we collect from this site the api key so that no one who looks at our repository has access to our ionos.
 
+>Inside .env
+>```bash
+>API_KEY="your_api_key"
+>```
 
+Create the script with bash
+
+```bash
+#!/bin/bash
+
+# Load the file variables .env
+source .env
+
+# Make the request with curl
+curl -X 'POST' \
+  'https://api.hosting.ionos.com/dns/v1/dyndns' \
+  -H 'accept: application/json' \
+  -H "X-API-Key: $API_KEY" \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "domains": [
+    "fondomarcador.com",
+    "www.fondomarcador.com"
+  ],
+  "description": "My DynamicDns"
+}'
+```
 ## Virtual machine creation using Vagrant
 We will create a virtual machine, which will be our server.
 
