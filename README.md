@@ -1,10 +1,37 @@
 # Self hosting with IONOS
-First of all we need a domain in Ionos to perform the following practice. In this practice we will create a virtual machine that will be our server, then we will provision it with Apache2. We will then bind our domain to the ip using a python script that will start every time we start the vm.
+First, we need a domain from Ionos to carry out this practice. We will create a virtual machine to serve as our server and provision it with Apache2. Then, we will bind our domain to the server's IP using a bash script that will run every time the VM starts. Once created our website, we will create various web pages with different functions. 
 
 ## Opening ports
 Inside our router we need to open ports 80 and 443.
 
 ![ports image in router](https://github.com/M-L56/self-hosting-with-ionos/blob/12529c1b2710c5347e13eb959e802d787af783f8/images/ports.png)
+
+## Virtual machine creation using Vagrant
+We will create a virtual machine, which will be our server.
+
+### 1. Creation of the server machine
+We will create a machine in debian/bookworm64:
+
+```ruby
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/bookworm64"
+end
+```
+
+### 2. Define the server machine
+We give a static IP to our server, and configure port forwarding for http and https. At first I make insecure my machine to test that is working.
+
+```ruby
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/bookworm64"
+
+  config.vm.define "server" do |server|
+    server.vm.network "private_network", ip: "192.168.57.10"
+    server.vm.network "forwarded_port", guest: 80, host: 8080
+    server.vm.network "forwarded_port", guest: 443, host: 8443
+  end
+end
+```
 
 ## IONOS DynDNS
 
@@ -50,7 +77,7 @@ curl -X 'POST' \
   "description": "My DynamicDns"
 }'
 ```
-
+### Provision with vagrant
 In the provision of Vagrantfile we need to initialize the server, for this we introduce these two lines:
 >The a2ensite command is used to enable a site configuration file on the Apache web server
 ```ruby
@@ -69,33 +96,6 @@ server.vm.provision "shell", inline: <<-SHELL
     chmod +x /home/vagrant/scripts/DynDNS.sh
     (crontab -l 2>/dev/null; echo "*/5 * * * * /home/vagrant/scripts/DynDNS.sh") | crontab -
   SHELL
-```
-## Virtual machine creation using Vagrant
-We will create a virtual machine, which will be our server.
-
-### 1.- Creation of the server machine
-We will create a machine in debian/bookworm64:
-
-```ruby
-Vagrant.configure("2") do |config|
-  config.vm.box = "debian/bookworm64"
-end
-```
-
-### 2.- Define the server machine
-We give a static IP to our server, and configure port forwarding for http and https. At first I make insecure my machine to test that is working.
-
-```ruby
-Vagrant.configure("2") do |config|
-  config.vm.box = "debian/bookworm64"
-  config.ssh.insert_key = false
-
-  config.vm.define "server" do |server|
-    server.vm.network "private_network", ip: "192.168.57.10"
-    server.vm.network "forwarded_port", guest: 80, host: 8080
-    server.vm.network "forwarded_port", guest: 443, host: 8443
-  end
-end
 ```
 
 ## Provisioning by vagrant
