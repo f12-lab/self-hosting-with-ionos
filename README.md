@@ -77,7 +77,7 @@ curl -X 'POST' \
   "description": "My DynamicDns"
 }'
 ```
-### Provision with vagrant
+### Provisioning by vagrant
 In the provision of Vagrantfile we need to initialize the server, for this we introduce these two lines:
 >The a2ensite command is used to enable a site configuration file on the Apache web server
 ```ruby
@@ -97,8 +97,27 @@ server.vm.provision "shell", inline: <<-SHELL
     (crontab -l 2>/dev/null; echo "*/5 * * * * /home/vagrant/scripts/DynDNS.sh") | crontab -
   SHELL
 ```
+### Provisioning by ansible
 
-## Provisioning by vagrant
+## Certification for our domain with Lets Encrypt
+In my case, I’m going to certify my domain with [lets encrypt](https://letsencrypt.org/)
+
+### Provisioning by vagrant
+In our Vagrantfile provision we will install certbot with apache2 dependencies 
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+      sudo apt install certbot python3-certbot-apache -y
+    SHELL
+```
+The following command obtains and configures a Let’s Encrypt SSL certificate for the fondomarcador.com domain, automatically enabling HTTPS in Apache and redirecting HTTP traffic to HTTPS.
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+      sudo apt install certbot python3-certbot-apache -y
+      sudo certbot --apache --non-interactive --agree-tos --email mquepra130@ieszaidinvergeles.org -d fondomarcador.com
+    SHELL
+```
+## Configuring Apache2
+### Provisioning by vagrant
 Has a provisioning with vagrant, where we will install and configure Apache2.
 
 ```ruby
@@ -108,7 +127,6 @@ server.vm.provision "shell", inline: <<-SHELL
     SHELL
 ```
 
-### Configuring Apache2
 #### - apache2.conf
 Copy apache2.conf from the machine.
 
