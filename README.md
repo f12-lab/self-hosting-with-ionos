@@ -79,7 +79,7 @@ curl -X 'POST' \
 ```
 ### Provisioning by vagrant
 In the provision of Vagrantfile we need to initialize the server, for this we introduce these two lines:
->The a2ensite command is used to enable a site configuration file on the Apache web server
+>The a2ensite command is used to enable a site configuration file on the Apache web server.
 ```ruby
 server.vm.provision "shell", inline: <<-SHELL
     sudo a2ensite fondomarcador.conf
@@ -103,7 +103,7 @@ server.vm.provision "shell", inline: <<-SHELL
 In my case, I’m going to certify my domain with [lets encrypt](https://letsencrypt.org/)
 
 ### Provisioning by vagrant
-In our Vagrantfile provision we will install certbot with apache2 dependencies 
+In our Vagrantfile provision we will install certbot with apache2 dependencies.
 ```ruby
 server.vm.provision "shell", inline: <<-SHELL
       sudo apt install certbot python3-certbot-apache -y
@@ -137,7 +137,7 @@ Copy apache2.conf from the machine.
 
 In the provision of Vagrantfile we need to copy this file inside its path. This will be important later, but now we dont change it.
 
-This file is inside our folder called apache2 where we will put the apache configuration files and pages
+This file is inside our folder called apache2 where we will put the apache configuration files and pages.
 
 ```ruby
 server.vm.provision "shell", inline: <<-SHELL
@@ -174,10 +174,10 @@ server.vm.provision "shell", inline: <<-SHELL
 ```
 
 #### - Webpages
-We create a folder that inside we create the differents webpages
+We create a folder that inside we create the differents webpages.
 1. Index.html
 
-At first I create a simple index.html to test the self-hosting, later I will upgrade to make looks better with the paths of the others webpages. We need to add this file inside `/var/www/html`
+At first I create a index.html file, later we need to add this file inside `/var/www/html`.
 
 ```ruby
 server.vm.provision "shell", inline: <<-SHELL
@@ -189,7 +189,7 @@ server.vm.provision "shell", inline: <<-SHELL
     SHELL
 ```
 
-We need to add the path of the index.html inside the virtual host
+We need to add the path of the index.html inside the virtual host.
 
 ```apacheconf
 <VirtualHost *:80>
