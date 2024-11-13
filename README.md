@@ -227,3 +227,54 @@ We need to add the path of the 404.html inside the virtual host.
     ErrorDocument 404 /404.html
 </VirtualHost>
 ```
+
+3. logo.png
+
+First we add a png image to our webpages folder, then add this image to the vagrant provisioning, in the path `/var/www/html`.
+
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+      apt-get update
+      apt-get -y install apache2
+      cp -v /vagrant/apache2/apache2.conf /etc/apache2
+      cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
+      cp -v /vagrant/apache/webpages/index.html /var/www/html
+      cp -v /vagrant/apache2/webpages/404.html /var/www/html
+      cp -v /vagrant/apache2/webpages/logo.png /var/www/html 
+    SHELL
+```
+
+We added to our site configuration, the following parameters for a direct installation of the file.
+
+```apacheconf
+<VirtualHost *:80>
+    ServerAdmin webmaster@fondomarcador.com
+    ServerName fondomarcador.com
+
+    DocumentRoot /var/www/html
+
+    ErrorDocument 404 /404.html
+
+    <Files "logo.png">
+        #Indicates that it is a binary file, meaning the browser will not directly display it.
+        ForceType application/octet-stream
+        #Sets the HTTP header so that the browser downloads the file as an attachment, rather than showing it on screen.
+        Header set Content-Disposition attachment
+    </Files>
+</VirtualHost>
+```
+
+The Header directive requires that the mod_headers module is enabled
+
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+      apt-get update
+      apt-get -y install apache2
+      cp -v /vagrant/apache2/apache2.conf /etc/apache2
+      cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
+      cp -v /vagrant/apache/webpages/index.html /var/www/html
+      cp -v /vagrant/apache2/webpages/404.html /var/www/html
+      sudo a2enmod headers 
+      cp -v /vagrant/apache2/webpages/logo.png /var/www/html 
+    SHELL
+```
