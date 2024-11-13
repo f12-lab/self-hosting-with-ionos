@@ -1,6 +1,9 @@
 # Self hosting with IONOS
 First, we need a domain from Ionos to carry out this practice. We will create a virtual machine to serve as our server and provision it with Apache2. Then, we will bind our domain to the server's IP using a bash script that will run every time the VM starts. Once created our website, we will create various web pages with different functions. 
 
+In my case I will practice by using two types of provisioning, first with vagrant and then with ansible. This I do because in Windows ansible does not work very well due to compatibility.  
+<!--(what mania I’m starting to have windows)-->
+
 ## Opening ports
 Inside our router we need to open ports 80 and 443.
 
