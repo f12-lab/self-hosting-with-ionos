@@ -15,8 +15,8 @@ Vagrant.configure("2") do |config|
       cp -v /vagrant/apache2/apache2.conf /etc/apache2
       cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
       # SSL
-      sudo apt install certbot python3-certbot-apache -y
-      sudo certbot --apache --non-interactive --agree-tos --email mquepra130@ieszaidinvergeles.org -d fondomarcador.com
+      #sudo apt install certbot python3-certbot-apache -y
+      #sudo certbot --apache --non-interactive --agree-tos --email mquepra130@ieszaidinvergeles.org -d fondomarcador.com
       # Web pages
       cp -v /vagrant/apache2/webpages/index.html /var/www/html
       # Dinamic IP
