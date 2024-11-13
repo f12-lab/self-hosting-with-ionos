@@ -19,6 +19,7 @@ Vagrant.configure("2") do |config|
       #sudo certbot --apache --non-interactive --agree-tos --email mquepra130@ieszaidinvergeles.org -d fondomarcador.com
       # Web pages
       cp -v /vagrant/apache2/webpages/index.html /var/www/html
+      cp -v /vagrant/apache2/webpages/404.html /var/www/html 
       # Dinamic IP
       mkdir -p /home/vagrant/scripts
       cp /vagrant/scripts/DynDNS.sh /home/vagrant/scripts
