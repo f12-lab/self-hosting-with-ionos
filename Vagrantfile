@@ -14,19 +14,21 @@ Vagrant.configure("2") do |config|
       apt-get -y install apache2
       cp -v /vagrant/apache2/apache2.conf /etc/apache2
       cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
+      sudo a2ensite fondomarcador.conf
       # SSL
       #sudo apt install certbot python3-certbot-apache -y
       #sudo certbot --apache --non-interactive --agree-tos --email mquepra130@ieszaidinvergeles.org -d fondomarcador.com
       # Web pages
       cp -v /vagrant/apache2/webpages/index.html /var/www/html
       cp -v /vagrant/apache2/webpages/404.html /var/www/html 
+      sudo a2enmod headers 
+      cp -v /vagrant/apache2/webpages/logo.png /var/www/html
       # Dinamic IP
       mkdir -p /home/vagrant/scripts
       cp /vagrant/scripts/DynDNS.sh /home/vagrant/scripts
       chmod +x /home/vagrant/scripts/DynDNS.sh
       (crontab -l 2>/dev/null; echo "*/5 * * * * /home/vagrant/scripts/DynDNS.sh") | crontab -
       #Enable apache2
-      sudo a2ensite fondomarcador.conf
       systemctl restart apache2
     SHELL
   end
