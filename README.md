@@ -199,3 +199,31 @@ We need to add the path of the index.html inside the virtual host.
     DocumentRoot /var/www/html
 </VirtualHost>
 ```
+
+2. 404.html
+
+Once the 404.html file has been created, which will tell you that the page is not found, we will have to put this file in `/var/www/html`.
+
+```ruby
+server.vm.provision "shell", inline: <<-SHELL
+      apt-get update
+      apt-get -y install apache2
+      cp -v /vagrant/apache2/apache2.conf /etc/apache2
+      cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
+      cp -v /vagrant/apache/webpages/index.html /var/www/html
+      cp -v /vagrant/apache2/webpages/404.html /var/www/html 
+    SHELL
+```
+
+We need to add the path of the 404.html inside the virtual host.
+
+```apacheconf
+<VirtualHost *:80>
+    ServerAdmin webmaster@fondomarcador.com
+    ServerName fondomarcador.com
+
+    DocumentRoot /var/www/html
+
+    ErrorDocument 404 /404.html
+</VirtualHost>
+```
