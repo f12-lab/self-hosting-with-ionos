@@ -23,6 +23,13 @@ Vagrant.configure("2") do |config|
       cp -v /vagrant/apache2/webpages/404.html /var/www/html 
       sudo a2enmod headers 
       cp -v /vagrant/apache2/webpages/logo.png /var/www/html
+      mkdir /var/www/html/admin
+      cp /vagrant/apache2/webpages/admin/.htaccess /var/www/html/admin/
+      cp /vagrant/apache2/webpages/admin/admin.html /var/www/html/admin/
+      cp /vagrant/apache2/webpages/admin/image.png /var/www/html/admin/
+      cp /vagrant/apache2/webpages/admin/401.html /var/www/html/admin/
+      # .htpasswd
+      cp /vagrant/.htpasswd/.htpasswd_admin /etc/apache2/.htpasswd_admin
       # Dinamic IP
       mkdir -p /home/vagrant/scripts
       cp /vagrant/scripts/DynDNS.sh /home/vagrant/scripts
