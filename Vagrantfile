@@ -10,8 +10,8 @@ Vagrant.configure("2") do |config|
     server.vm.network "forwarded_port", guest: 443, host: 8443
     server.vm.provision "shell", inline: <<-SHELL
       apt-get update
-      # Configure apache2
-      apt-get -y install apache2
+      # Configure apache2 
+      apt-get -y install apache2 apache2-utils
       cp -v /vagrant/apache2/apache2.conf /etc/apache2
       cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
       sudo a2ensite fondomarcador.conf
@@ -20,16 +20,17 @@ Vagrant.configure("2") do |config|
       #sudo certbot --apache --non-interactive --agree-tos --email mquepra130@ieszaidinvergeles.org -d fondomarcador.com
       # Web pages
       cp -v /vagrant/apache2/webpages/index.html /var/www/html
-      cp -v /vagrant/apache2/webpages/404.html /var/www/html 
+      cp -v /vagrant/apache2/webpages/errors/404.html /var/www/html 
+      cp -v /vagrant/apache2/webpages/errors/401.html /var/www/html
       sudo a2enmod headers 
       cp -v /vagrant/apache2/webpages/logo.png /var/www/html
       mkdir /var/www/html/admin
-      cp /vagrant/apache2/webpages/admin/.htaccess /var/www/html/admin/
-      cp /vagrant/apache2/webpages/admin/admin.html /var/www/html/admin/
-      cp /vagrant/apache2/webpages/admin/image.png /var/www/html/admin/
-      cp /vagrant/apache2/webpages/admin/401.html /var/www/html/admin/
+      cp -v /vagrant/apache2/webpages/admin/.htaccess /var/www/html/admin/
+      cp -v /vagrant/apache2/webpages/admin/admin.html /var/www/html/admin/
+      cp -v /vagrant/apache2/webpages/admin/image.png /var/www/html/admin/
       # .htpasswd
       cp /vagrant/.htpasswd/.htpasswd_admin /etc/apache2/.htpasswd_admin
+      cp /vagrant/.htpasswd/.htpasswd_sysadmin /etc/apache2/.htpasswd_sysadmin
       # Dinamic IP
       mkdir -p /home/vagrant/scripts
       cp /vagrant/scripts/DynDNS.sh /home/vagrant/scripts
