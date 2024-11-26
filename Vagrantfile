@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
       mkdir /var/www/html/errors
       sudo chown -R www-data:www-data /var/www/html/errors
       cp -v /vagrant/apache2/webpages/errors/404.html /var/www/html/errors 
-      #cp -v /vagrant/apache2/webpages/errors/401.html /var/www/html/errors
+      cp -v /vagrant/apache2/webpages/errors/401.html /var/www/html/errors
       ## Image
       sudo a2enmod headers 
       cp -v /vagrant/apache2/webpages/logo.png /var/www/html
@@ -42,7 +42,6 @@ Vagrant.configure("2") do |config|
       cp -v /vagrant/apache2/webpages/admin/.htaccess /var/www/html/admin/
       cp -v /vagrant/apache2/webpages/admin/admin.html /var/www/html/admin/
       cp -v /vagrant/apache2/webpages/admin/image.png /var/www/html/admin/
-      cp -v /vagrant/apache2/webpages/errors/401.html /var/www/html/admin/
       ### .htpasswd
       cp /vagrant/.htpasswd/.htpasswd_admin /etc/apache2/.htpasswd_admin
       cp /vagrant/.htpasswd/.htpasswd_sysadmin /etc/apache2/.htpasswd_sysadmin

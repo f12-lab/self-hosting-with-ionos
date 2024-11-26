@@ -2,5 +2,3 @@ AuthType Basic
 AuthName "Restricted Area"
 AuthUserFile /etc/apache2/.htpasswd_admin
 Require valid-user
-
-ErrorDocument 401 /admin/401.html
