@@ -12,7 +12,8 @@ curl -X 'POST' \
   -d '{
   "domains": [
     "fondomarcador.com",
-    "www.fondomarcador.com"
+    "www.fondomarcador.com",
+    "grafana.fondomarcador.com"
   ],
   "description": "My DynamicDns"
 }'
