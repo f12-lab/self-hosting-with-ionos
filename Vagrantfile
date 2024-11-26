@@ -17,8 +17,18 @@ Vagrant.configure("2") do |config|
       cp -v /vagrant/apache2/fondomarcador.conf /etc/apache2/sites-available
       sudo a2ensite fondomarcador.conf
       # SSL
-      #sudo apt install certbot python3-certbot-apache -y
-      #sudo certbot --apache --non-interactive --agree-tos --email mquepra130@ieszaidinvergeles.org -d fondomarcador.com
+      sudo mkdir -p /etc/apache2/ssl
+      sudo chmod 700 /etc/apache2/ssl
+
+      cp -v /vagrant/.certs/_.fondomarcador.com_private_key.key /etc/apache2/ssl/private.key
+      cp -v /vagrant/.certs/fondomarcador.com_ssl_certificate.cer /etc/apache2/ssl/certificate.crt
+      cp -v /vagrant/.certs/intermediate2.cer /etc/apache2/ssl/intermediate.crt
+
+      sudo chmod 600 /etc/apache2/ssl/private.key
+
+      sudo a2enmod ssl
+      sudo a2enmod rewrite
+
       # Web pages
       ## CSS
       mkdir /var/www/html/CSS
@@ -42,6 +52,10 @@ Vagrant.configure("2") do |config|
       cp -v /vagrant/apache2/webpages/admin/.htaccess /var/www/html/admin/
       cp -v /vagrant/apache2/webpages/admin/admin.html /var/www/html/admin/
       cp -v /vagrant/apache2/webpages/admin/image.png /var/www/html/admin/
+      ## Status (doesn't work)
+      mkdir /var/www/html/status
+      sudo chown -R www-data:www-data /var/www/html/status
+      cp -v /vagrant/apache2/webpages/sysadmin/.htaccess /var/www/html/status
       ### .htpasswd
       cp /vagrant/.htpasswd/.htpasswd_admin /etc/apache2/.htpasswd_admin
       cp /vagrant/.htpasswd/.htpasswd_sysadmin /etc/apache2/.htpasswd_sysadmin
