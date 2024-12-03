@@ -30,32 +30,18 @@ Vagrant.configure("2") do |config|
       sudo a2enmod rewrite
 
       # Web pages
+      cp -vr /vagrant/apache2/webpages/ /var/www/
       ## CSS
-      mkdir /var/www/html/CSS
       sudo chown -R www-data:www-data /var/www/html/CSS
-      cp -v /vagrant/apache2/webpages/CSS/index.css /var/www/html/CSS
-      cp -v /vagrant/apache2/webpages/CSS/admin.css /var/www/html/CSS
-      cp -v /vagrant/apache2/webpages/CSS/errors.css /var/www/html/CSS
       ## Index
-      cp -v /vagrant/apache2/webpages/index.html /var/www/html
       ## Errors
-      mkdir /var/www/html/errors
       sudo chown -R www-data:www-data /var/www/html/errors
-      cp -v /vagrant/apache2/webpages/errors/404.html /var/www/html/errors 
-      cp -v /vagrant/apache2/webpages/errors/401.html /var/www/html/errors
       ## Image
       sudo a2enmod headers 
-      cp -v /vagrant/apache2/webpages/logo.png /var/www/html
       ## Admin
-      mkdir /var/www/html/admin
       sudo chown -R www-data:www-data /var/www/html/admin
-      cp -v /vagrant/apache2/webpages/admin/.htaccess /var/www/html/admin/
-      cp -v /vagrant/apache2/webpages/admin/admin.html /var/www/html/admin/
-      cp -v /vagrant/apache2/webpages/admin/image.png /var/www/html/admin/
       ## Status (doesn't work)
-      mkdir /var/www/html/status
       sudo chown -R www-data:www-data /var/www/html/status
-      cp -v /vagrant/apache2/webpages/sysadmin/.htaccess /var/www/html/status
       ### .htpasswd
       cp /vagrant/.htpasswd/.htpasswd_admin /etc/apache2/.htpasswd_admin
       cp /vagrant/.htpasswd/.htpasswd_sysadmin /etc/apache2/.htpasswd_sysadmin
@@ -64,8 +50,9 @@ Vagrant.configure("2") do |config|
       cp /vagrant/scripts/ /home/vagrant/scripts/
       chmod +x /home/vagrant/scripts/DynDNS.sh
       chmod 644 /home/vagrant/scripts/.env
-      (crontab -l 2>/dev/null; echo "*/5 * * * * /home/vagrant/scripts/DynDNS.sh") | crontab -
-      
+      cp /vagrant/config/dynamic-dns/DDNS-cronjob /etc/cron.d/
+      #Shortener
+      sudo chmod 777 /var/www/webpages/shortener/.env
       # Grafana
 
       apt-get install -y curl php libapache2-mod-php gnupg jq
