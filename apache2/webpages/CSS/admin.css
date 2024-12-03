@@ -45,6 +45,13 @@ body {
     margin-bottom: 15px;
 }
 
+.content a {
+    color: #00ff00;
+    text-decoration: none; /* Elimina el subrayado */
+    font-weight: bold; /* Hace el texto en negrita */
+    text-shadow: 0 0 10px #00ff00;
+}
+
 .content img {
     width: 50%;
     max-width: 500px;

@@ -7,7 +7,6 @@ response=$(curl -s -X "GET" \
   -H "accept: application/json" \
   -H "X-API-Key: $API_KEY")
 
-# Extraer y limpiar el contenido del campo 'content'
 url=$(echo "$response" | jq -r '.content | gsub("\""; "")')
 
 echo "$url"

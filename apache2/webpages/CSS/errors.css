@@ -47,8 +47,8 @@ body {
 
 .content a {
     color: #00ff00;
-    text-decoration: none;
-    font-weight: bold;
+    text-decoration: none; /* Elimina el subrayado */
+    font-weight: bold; /* Hace el texto en negrita */
     text-shadow: 0 0 10px #00ff00;
 }
 
