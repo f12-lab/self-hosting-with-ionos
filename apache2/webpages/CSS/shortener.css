@@ -90,16 +90,16 @@ button:hover {
     word-wrap: break-word;
 }
 
-/* Estilo para el botón de vuelta */
+/* Style for the return button */
 .back-button {
-    position: fixed; /* Fija el botón en la pantalla */
-    top: 45px; /* Lo coloca en la parte superior */
-    left: 10%; /* Lo coloca en la parte izquierda */
+    position: fixed; 
+    top: 45px; 
+    left: 10%; 
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
     color: #000;
     background-color: #00ff00;
-    border: 2px solid #00ff00; /* Agrega borde de 2px */
+    border: 2px solid #00ff00; 
     padding: 10px 20px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -109,6 +109,6 @@ button:hover {
 .back-button:hover {
     color: #00ff00;
     background-color: #000;
-    border: 2px solid #00ff00; /* Mantener borde en hover */
-    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; /* Mantener sombra */
+    border: 2px solid #00ff00; 
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; 
 }

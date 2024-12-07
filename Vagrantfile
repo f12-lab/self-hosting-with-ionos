@@ -87,19 +87,6 @@ Vagrant.configure("2") do |config|
       cp /vagrant/scripts/grafana/dashboard.json /var/lib/grafana/dashboards/
       cp /vagrant/scripts/grafana/dashboard.yml /etc/grafana/provisioning/dashboards/
 
-      # Configurar el provisioning
-      cat <<EOF > /etc/grafana/provisioning/dashboards/dashboard.yml
-apiVersion: 1
-providers:
-  - name: 'default'
-    orgId: 1
-    folder: ''
-    type: 'file'
-    disableDeletion: false
-    editable: false
-    options:
-      path: /var/lib/grafana/dashboards
-EOF
       sudo chown grafana:grafana /var/lib/grafana/dashboards/dashboard.json
       sudo chmod 644 /var/lib/grafana/dashboards/dashboard.json
       sudo systemctl restart grafana-server

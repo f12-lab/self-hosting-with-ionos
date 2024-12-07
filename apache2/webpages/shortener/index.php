@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exec($command, $output, $return_var);
 
     if ($return_var === 0) {
-        $message = "¡Tu URL corta es: <a href='https://$short_url' target='_blank'>$short_url</a>";
+        $message = "Your shortened URL is: <a href='https://$short_url' target='_blank'>$short_url</a>";
     } else {
-        $message = "Hubo un error al crear la URL corta. Por favor, inténtalo de nuevo.";
+        $message = "There was an error creating the shortened URL. Please try again.";
     }
 }
 ?>
@@ -29,16 +29,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <main>
-        <a href="/" class="back-button">Volver al inicio</a>
+        <a href="/" class="back-button">Return to Home</a>
         
-        <h1>Acortador de URL</h1>
-        <p>Usa esta herramienta para acortar tus enlaces.</p>
+        <h1>URL Shortener</h1>
+        <p>Use this tool to shorten your links.</p>
 
         <form action="index.php" method="POST">
-            <label for="long_url">URL larga:</label>
+            <label for="long_url">Long URL:</label>
             <input type="text" id="long_url" name="long_url" placeholder="https://example.com" required />
             <br>
-            <button type="submit">Acortar</button>
+            <button type="submit">Shorten</button>
         </form>
 
         <?php if (isset($message)) { ?>
