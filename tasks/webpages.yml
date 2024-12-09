@@ -1,0 +1,47 @@
+---
+- name: Instalar rsync en el servidor remoto
+  apt:
+    name: rsync
+    state: present
+
+- name: Copiar páginas web
+  synchronize:
+    src: ./apache2/webpages/
+    dest: /var/www/webpages/
+    mode: push
+    recursive: yes
+    owner: yes
+    group: yes
+
+- name: Copiar archivo .htpasswd_admin
+  copy:
+    src: ./.htpasswd/.htpasswd_admin
+    dest: /etc/apache2/.htpasswd_admin
+    owner: www-data
+    group: www-data
+    mode: '0644'
+
+- name: Copiar archivo .htpasswd_sysadmin
+  copy:
+    src: ./.htpasswd/.htpasswd_sysadmin
+    dest: /etc/apache2/.htpasswd_sysadmin
+    owner: www-data
+    group: www-data
+    mode: '0644'
+
+- name: Establecer permisos de CSS, errores, admin y status
+  file:
+    path: "/var/www/webpages/{{ item }}"
+    owner: www-data
+    group: www-data
+    mode: '0755'
+  loop:
+    - CSS
+    - errors
+    - admin
+    - shortener
+
+- name: Permisos .env shortener
+  file:
+    path: "/var/www/webpages/shortener/.env"
+    mode: '0777'

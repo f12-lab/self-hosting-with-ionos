@@ -1,0 +1,21 @@
+---
+- name: Crear directorio de scripts
+  file:
+    path: /home/vagrant/scripts
+    state: directory
+    mode: '0755'
+
+- name: Copiar scripts de DynDNS y establecer permisos
+  synchronize:
+    src: ./scripts/
+    dest: /home/vagrant/scripts/
+    mode: push
+    recursive: yes
+    owner: yes
+    group: yes
+
+- name: Copiar y establecer permisos para el cronjob de DDNS
+  copy:
+    src: ./scripts/DDNS-cronjob
+    dest: /etc/cron.d/DDNS-cronjob
+    mode: '0644'

@@ -1,0 +1,42 @@
+---
+- name: Actualizar lista de paquetes
+  apt:
+    update_cache: true
+
+- name: Instalar y configurar Apache2
+  apt:
+    name: 
+      - apache2
+      - apache2-utils
+    state: present
+
+- name: Configurar Apache2
+  copy:
+    src: /vagrant/apache2/apache2.conf
+    dest: /etc/apache2/apache2.conf
+    owner: root
+    group: root
+    mode: '0644'
+    remote_src: yes
+
+- name: Copiar configuración del sitio fondomarcador
+  copy:
+    src: /vagrant/apache2/fondomarcador.conf
+    dest: /etc/apache2/sites-available/fondomarcador.conf
+    owner: root
+    group: root
+    mode: '0644'
+    remote_src: yes
+
+
+- name: Habilitar el sitio fondomarcador
+  command: a2ensite fondomarcador.conf
+
+- name: Habilitar módulos SSL y Rewrite
+  command: "{{ item }}"
+  loop:
+    - a2enmod ssl
+    - a2enmod rewrite
+    - a2enmod headers
+    - a2enmod proxy
+    - a2enmod proxy_http

@@ -1,0 +1,160 @@
+---
+- name: Instalar paquetes necesarios para Grafana
+  apt:
+    name:
+      - curl
+      - php
+      - libapache2-mod-php
+      - gnupg
+      - jq
+      - gnupg2
+      - software-properties-common
+      - apt-transport-https
+      - wget
+    state: present
+    update_cache: true
+
+- name: Crear directorio para llaves de APT
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+- name: Añadir llave GPG de Grafana
+  shell: |
+    wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
+  args:
+    creates: /etc/apt/keyrings/grafana.gpg
+
+- name: Añadir repositorio de Grafana
+  lineinfile:
+    path: /etc/apt/sources.list.d/grafana.list
+    line: "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main"
+    create: yes
+
+- name: Instalar Grafana
+  apt:
+    name: grafana
+    state: present
+    update_cache: true
+
+- name: Copiar configuración de Grafana
+  copy:
+    src: ./scripts/grafana/grafana.ini
+    dest: /etc/grafana/grafana.ini
+
+- name: Reiniciar servicios de Grafana y Apache
+  systemd:
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - grafana-server
+    - apache2
+
+- name: Descargar y extraer Apache Exporter
+  shell: |
+    curl -s https://api.github.com/repos/Lusitaniae/apache_exporter/releases/latest \
+      | grep browser_download_url \
+      | grep linux-amd64 \
+      | cut -d '"' -f 4 \
+      | wget -qi -
+    tar xvf apache_exporter-*.linux-amd64.tar.gz
+  args:
+    chdir: /tmp
+
+- name: Comprobar directorio generado por la extracción
+  shell: ls -d /tmp/apache_exporter-*linux-amd64
+  register: exporter_dir
+
+- name: Mover binario de Apache Exporter
+  command: mv "{{ exporter_dir.stdout }}/apache_exporter" /usr/local/bin/apache_exporter
+
+- name: Establecer permisos para Apache Exporter
+  file:
+    path: /usr/local/bin/apache_exporter
+    mode: '0755'
+
+- name: Crear grupo y usuario para Prometheus
+  block:
+    - name: Crear grupo prometheus
+      group:
+        name: prometheus
+        system: true
+
+    - name: Crear usuario prometheus
+      user:
+        name: prometheus
+        shell: /sbin/nologin
+        group: prometheus
+        system: true
+
+- name: Copiar archivo de servicio para Apache Exporter
+  copy:
+    src: ./scripts/grafana/apache_exporter.service
+    dest: /etc/systemd/system/apache_exporter.service
+
+- name: Recargar configuraciones del sistema
+  shell: sudo systemctl daemon-reload
+
+- name: Reiniciar servicio de Apache Exporter
+  systemd:
+    name: apache_exporter.service
+    state: restarted
+
+- name: Instalar Prometheus
+  apt:
+    name: prometheus
+    state: present
+
+- name: Copiar configuración de Prometheus
+  copy:
+    src: ./scripts/grafana/prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+
+- name: Reiniciar Prometheus
+  systemd:
+    name: prometheus
+    state: restarted
+
+- name: Crear directorios para dashboards de Grafana
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: grafana
+    group: grafana
+    mode: '0755'
+  loop:
+    - /var/lib/grafana/dashboards
+    - /etc/grafana/provisioning/dashboards
+
+- name: Copiar dashboards y configuración de Grafana
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: grafana
+    group: grafana
+    mode: '0644'
+  loop:
+    - { src: ./scripts/grafana/dashboard.json, dest: /var/lib/grafana/dashboards/dashboard.json }
+    - { src: ./scripts/grafana/dashboard.yml, dest: /etc/grafana/provisioning/dashboards/dashboard.yml }
+
+- name: Crear directorio para datasources de Grafana
+  file:
+    path: /etc/grafana/provisioning/datasources
+    state: directory
+    mode: '0755'
+
+- name: Copiar configuración de datasources
+  copy:
+    src: ./scripts/grafana/datasources.yml
+    dest: /etc/grafana/provisioning/datasources/datasources.yml
+
+- name: Reiniciar Grafana
+  systemd:
+    name: grafana-server
+    state: restarted
+
+- name: Reiniciar Apache explícitamente
+  systemd:
+    name: apache2
+    state: restarted
