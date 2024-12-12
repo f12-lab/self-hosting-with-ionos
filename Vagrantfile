@@ -12,8 +12,8 @@ Vagrant.configure("2") do |config|
     # Configuración de Ansible
     server.vm.provision "ansible" do |ansible|
       ansible.compatibility_mode = "1.8"
-      ansible.playbook = "sites.yml"
-      ansible.inventory_path = "hosts"
+      ansible.playbook = "ansible/sites.yml"
+      ansible.inventory_path = "ansible/hosts"
     end
   end
 end

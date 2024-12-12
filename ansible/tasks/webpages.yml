@@ -6,7 +6,7 @@
 
 - name: Copiar páginas web
   synchronize:
-    src: ./apache2/webpages/
+    src: ../apache2/webpages/
     dest: /var/www/webpages/
     mode: push
     recursive: yes
@@ -15,7 +15,7 @@
 
 - name: Copiar archivo .htpasswd_admin
   copy:
-    src: ./.htpasswd/.htpasswd_admin
+    src: ../.htpasswd/.htpasswd_admin
     dest: /etc/apache2/.htpasswd_admin
     owner: www-data
     group: www-data
@@ -23,7 +23,7 @@
 
 - name: Copiar archivo .htpasswd_sysadmin
   copy:
-    src: ./.htpasswd/.htpasswd_sysadmin
+    src: ../.htpasswd/.htpasswd_sysadmin
     dest: /etc/apache2/.htpasswd_sysadmin
     owner: www-data
     group: www-data

@@ -40,7 +40,7 @@
 
 - name: Copiar configuración de Grafana
   copy:
-    src: ./scripts/grafana/grafana.ini
+    src: ../scripts/grafana/grafana.ini
     dest: /etc/grafana/grafana.ini
 
 - name: Reiniciar servicios de Grafana y Apache
@@ -90,7 +90,7 @@
 
 - name: Copiar archivo de servicio para Apache Exporter
   copy:
-    src: ./scripts/grafana/apache_exporter.service
+    src: ../scripts/grafana/apache_exporter.service
     dest: /etc/systemd/system/apache_exporter.service
 
 - name: Recargar configuraciones del sistema
@@ -108,7 +108,7 @@
 
 - name: Copiar configuración de Prometheus
   copy:
-    src: ./scripts/grafana/prometheus.yml
+    src: ../scripts/grafana/prometheus.yml
     dest: /etc/prometheus/prometheus.yml
 
 - name: Reiniciar Prometheus
@@ -129,14 +129,14 @@
 
 - name: Copiar dashboards y configuración de Grafana
   copy:
-    src: "{{ item.src }}"
+    src: "../scripts/grafana/{{ item.src }}"
     dest: "{{ item.dest }}"
     owner: grafana
     group: grafana
     mode: '0644'
   loop:
-    - { src: ./scripts/grafana/dashboard.json, dest: /var/lib/grafana/dashboards/dashboard.json }
-    - { src: ./scripts/grafana/dashboard.yml, dest: /etc/grafana/provisioning/dashboards/dashboard.yml }
+    - { src: dashboard.json, dest: /var/lib/grafana/dashboards/dashboard.json }
+    - { src: dashboard.yml, dest: /etc/grafana/provisioning/dashboards/dashboard.yml }
 
 - name: Crear directorio para datasources de Grafana
   file:
@@ -146,7 +146,7 @@
 
 - name: Copiar configuración de datasources
   copy:
-    src: ./scripts/grafana/datasources.yml
+    src: ../scripts/grafana/datasources.yml
     dest: /etc/grafana/provisioning/datasources/datasources.yml
 
 - name: Reiniciar Grafana
