@@ -171,7 +171,7 @@ A preconfigured dashboard offers visual insights into server activity and health
 - Response times.
 - Server uptime.
 
-> ![Grafana Dashboard](path-to-dashboard-screenshot.png)
+> ![Grafana Dashboard](https://github.com/M-L56/self-hosting-with-ionos/blob/e759093692154d7de2e8e4d082d1b2950cb0afe2/images/grafanaDashboard.png)
 
 ---
 
