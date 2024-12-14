@@ -97,7 +97,7 @@ Deploys the website files and sets appropriate permissions:
 2. Update the `sites.yml` playbook with the desired task files.
 3. Run the playbook:
    ```bash
-   ansible-playbook -i hosts sites.yml
+   ansible-playbook -i hosts sites.yml --private-key=.vagrant/machines/server/virtualbox/private_key 
    ```
 
 ---
