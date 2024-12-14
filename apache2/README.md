@@ -138,9 +138,84 @@ Sensitive information like API keys and zone IDs are stored in an `.env` file to
 
 ---
 
-## Performance tests
+## Performance Tests
+
+Apache Benchmark (`ab`) was used to evaluate the server’s performance. Multiple tests were conducted with varying concurrency (`-c`) and total requests (`-n`), both with and without headers.
+
+### Testing Structure
+
+#### Test 1: `-c 100` and `-n 1000` (Without Headers)
+1. **/admin:**
+   ```bash
+   sudo ab -k -c 100 -n 1000 -A admin:asir https://fondomarcador.com/admin/
+   ```
+2. **/fondomarcador.com** (SSL3 and TLS1.2):
+   ```bash
+   sudo ab -f SSL3 -k -c 100 -n 1000 https://fondomarcador.com/
+   sudo ab -f TLS1.2 -k -c 100 -n 1000 https://fondomarcador.com/
+   ```
+3. **/logo.png:**
+   ```bash
+   sudo ab -k -c 100 -n 1000 https://fondomarcador.com/logo.png
+   ```
+#### Test 2: `-c 100` and `-n 1000` (With Headers)
+1. **/admin:**
+   ```bash
+   sudo ab -k -c 100 -n 1000 -A admin:asir -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/admin/
+   ```
+2. **/fondomarcador.com** (SSL3 and TLS1.2):
+   ```bash
+   sudo ab -f SSL3 -k -c 100 -n 1000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/
+   sudo ab -f TLS1.2 -k -c 100 -n 1000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/
+   ```
+3. **/logo.png:**
+   ```bash
+   sudo ab -k -c 100 -n 1000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/logo.png
+   ```
+
+#### Test 3: `-c 1000` and `-n 10000` (Without Headers)
+1. **/admin:**
+   ```bash
+   sudo ab -k -c 1000 -n 10000 -A admin:asir https://fondomarcador.com/admin/
+   ```
+2. **/fondomarcador.com** (SSL3 and TLS1.2):
+   ```bash
+   sudo ab -f SSL3 -k -c 1000 -n 10000 https://fondomarcador.com/
+   sudo ab -f TLS1.2 -k -c 1000 -n 10000 https://fondomarcador.com/
+   ```
+3. **/logo.png:**
+   ```bash
+   sudo ab -k -c 1000 -n 10000 https://fondomarcador.com/logo.png
+   ```
+
+#### Test 4: `-c 1000` and `-n 10000` (With Headers)
+1. **/admin:**
+   ```bash
+   sudo ab -k -c 1000 -n 10000 -A admin:asir -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/admin/
+   ```
+2. **/fondomarcador.com** (SSL3 and TLS1.2):
+   ```bash
+   sudo ab -f SSL3 -k -c 1000 -n 10000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/
+   sudo ab -f TLS1.2 -k -c 1000 -n 10000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/
+   ```
+3. **/logo.png:**
+   ```bash
+   sudo ab -k -c 1000 -n 10000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/logo.png
+   ```
+
+### Observations
+
+1. Under higher loads (`-c 1000`, `-n 10000`), static resources like `/logo.png` caused server saturation, leading to errors and downtime. 
+2. Dynamic routes like `/admin` showed better resilience under moderate load but struggled with higher concurrency.
+3. Adding headers helped reduce overall bandwidth usage but didn’t entirely mitigate server overload.
+
+### Recommendations
+
+- Optimize static resource delivery by enabling caching mechanisms or integrating a CDN.
+- Increase server scalability to handle heavy concurrency and high request volumes.
+- Regularly test server capacity and fine-tune configurations using tools like Grafana and Prometheus for real-time insights.
 
 ---
 
 ## Conclusion
-This directory integrates essential configurations and functionalities for `fondomarcador.com`. It combines Apache2’s flexibility with a custom URL shortener to provide a secure and robust web experience. For detailed provisioning, refer to the [apache.yml](../ansible/tasks/apache.yml) file.
+This directory integrates essential configurations and functionalities for `fondomarcador.com`. It combines Apache2’s flexibility with a custom URL shortener to provide a secure and robust web experience. For detailed provisioning, refer to the [apache.yml](../ansible/tasks/apache.yml) file. While functional under typical load, the system experiences performance issues during high concurrency tests. These observations underscore the importance of proactive scaling and caching strategies to enhance reliability during peak traffic periods.
