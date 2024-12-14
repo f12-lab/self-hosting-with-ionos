@@ -115,6 +115,7 @@ Automation scripts for dynamic DNS, monitoring, and more. Includes preconfigured
 ## Opening Ports
 
 Inside your router, you need to open ports 80 (HTTP) and 443 (HTTPS) to ensure proper server access and SSL configuration.
+
 ![ports image in router](https://github.com/M-L56/self-hosting-with-ionos/blob/12529c1b2710c5347e13eb959e802d787af783f8/images/ports.png)
 
 ---
