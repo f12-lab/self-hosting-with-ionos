@@ -149,63 +149,91 @@ Apache Benchmark (`ab`) was used to evaluate the server’s performance. Multipl
    ```bash
    sudo ab -k -c 100 -n 1000 -A admin:asir https://fondomarcador.com/admin/
    ```
+   ![info-ab1001000admin.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/1001000/admin/info-ab1001000admin.png)
 2. **/fondomarcador.com** (SSL3 and TLS1.2):
    ```bash
    sudo ab -f SSL3 -k -c 100 -n 1000 https://fondomarcador.com/
+   ```
+   ![info-ab1001000SSL3.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/1001000/SSL3/info-ab1001000SSL3.png)
+   ```bash
    sudo ab -f TLS1.2 -k -c 100 -n 1000 https://fondomarcador.com/
    ```
+   ![info-ab1001000TLS1.2.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/1001000/TLS1.2/info-ab1001000TLS1.2.png)
 3. **/logo.png:**
    ```bash
    sudo ab -k -c 100 -n 1000 https://fondomarcador.com/logo.png
    ```
+   ![info-ab1001000foto.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/1001000/foto/info-ab1001000foto.png)
+
 #### Test 2: `-c 100` and `-n 1000` (With Headers)
 1. **/admin:**
    ```bash
    sudo ab -k -c 100 -n 1000 -A admin:asir -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/admin/
    ```
+   ![info-Hab1001000admin.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/1001000%20header/admin/info-Hab1001000admin.png)
 2. **/fondomarcador.com** (SSL3 and TLS1.2):
    ```bash
    sudo ab -f SSL3 -k -c 100 -n 1000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/
+   ```
+   ![info-Hab1001000SSL3.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/1001000%20header/SSL3/info-Hab1001000SSL3.png)
+   ```bash
    sudo ab -f TLS1.2 -k -c 100 -n 1000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/
    ```
+   ![info-Hab1001000TLS1.2.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/1001000%20header/TLS1.2/info-Hab1001000TLS1.2.png)
 3. **/logo.png:**
    ```bash
    sudo ab -k -c 100 -n 1000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/logo.png
    ```
+   ![info-Hab1001000foto.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/1001000%20header/foto/info-Hab1001000foto.png)
 
 #### Test 3: `-c 1000` and `-n 10000` (Without Headers)
 1. **/admin:**
    ```bash
    sudo ab -k -c 1000 -n 10000 -A admin:asir https://fondomarcador.com/admin/
    ```
+   ![info-ab100010000admin.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000/admin/info-ab100010000admin.png)
 2. **/fondomarcador.com** (SSL3 and TLS1.2):
    ```bash
    sudo ab -f SSL3 -k -c 1000 -n 10000 https://fondomarcador.com/
+   ```
+   ![info-ab100010000SSL3.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000/SSL3/info-ab100010000SSL3.png)
+   ```bash
    sudo ab -f TLS1.2 -k -c 1000 -n 10000 https://fondomarcador.com/
    ```
+   ![info-ab100010000TLS1.2.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000/TLS1.2/info-ab100010000TLS1.2.png)
 3. **/logo.png:**
    ```bash
    sudo ab -k -c 1000 -n 10000 https://fondomarcador.com/logo.png
    ```
+   ![error-ab100010000foto.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000/foto!!!/error-ab100010000foto.png)
+   ![info-ab100010000foto.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000/foto!!!/info-ab100010000foto.png)
 
 #### Test 4: `-c 1000` and `-n 10000` (With Headers)
 1. **/admin:**
    ```bash
    sudo ab -k -c 1000 -n 10000 -A admin:asir -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/admin/
    ```
+   ![info-Hab100010000admin.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000header/admin/info-Hab100010000admin.png)
 2. **/fondomarcador.com** (SSL3 and TLS1.2):
    ```bash
    sudo ab -f SSL3 -k -c 1000 -n 10000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/
+   ```
+   ![info-Hab100010000SSL3.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000header/SSL3/info-Hab100010000SSL3.png)
+   ```bash
    sudo ab -f TLS1.2 -k -c 1000 -n 10000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/
    ```
+   ![info-Hab100010000TLS1.2.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000header/TLS1.2/info-Hab100010000TLS1.2.png)
 3. **/logo.png:**
    ```bash
    sudo ab -k -c 1000 -n 10000 -H "Accept-Encoding: gzip, deflate" https://fondomarcador.com/logo.png
    ```
+   ![error-Hab100010000foto.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000header/foto!!!/error-Hab100010000foto.png)
+   ![info-Hab100010000foto.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000header/foto!!!/info-Hab100010000foto.png)
 
 ### Observations
 
-1. Under higher loads (`-c 1000`, `-n 10000`), static resources like `/logo.png` caused server saturation, leading to errors and downtime. 
+1. Under higher loads (`-c 1000`, `-n 10000`), static resources like `/logo.png` caused server saturation, leading to errors and downtime.
+![serverDown.png](https://github.com/M-L56/self-hosting-with-ionos/blob/44bed96fff5f720ed74e53f46b126dda28fd794d/images/performance/100010000header/foto!!!/serverDown.png) 
 2. Dynamic routes like `/admin` showed better resilience under moderate load but struggled with higher concurrency.
 3. Adding headers helped reduce overall bandwidth usage but didn’t entirely mitigate server overload.
 

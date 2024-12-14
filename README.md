@@ -95,12 +95,12 @@ Follow these steps to set up the environment on your machine:
 ### ansible
 Includes Ansible playbooks for provisioning the server.
 
-[More Details](./ansible/README.md)
+[More Details](./ansible/)
 
 ### apache2
 Holds Apache configuration files and hosted webpages.
 
-[More Details](./apache2/README.md)
+[More Details](./apache2/)
 
 ### scripts
 Automation scripts for dynamic DNS, monitoring, and more. Includes preconfigured Grafana settings:
@@ -108,7 +108,7 @@ Automation scripts for dynamic DNS, monitoring, and more. Includes preconfigured
 - **Prometheus Integration**: Collects and stores metrics for efficient monitoring.
 - **Exporters**: Configured `apache_exporter` to gather data directly from the web server.
 
-[More Details](./scripts/README.md)
+[More Details](./scripts/)
 
 ---
 
