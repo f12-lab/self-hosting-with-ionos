@@ -73,7 +73,7 @@ Follow these steps to set up the environment on your machine:
 1. Clone the repository:
    ```bash
    git clone https://github.com/M-L56/self-hosting-with-ionos
-   cd fondomarcador
+   cd self-hosting-with-ionos
    ```
 
 2. Install the required tools:
@@ -98,7 +98,7 @@ Includes Ansible playbooks for provisioning the server.
 [More Details](./ansible/)
 
 ### apache2
-Holds Apache configuration files and hosted webpages.
+Holds Apache configuration files, hosted webpages, details of the URL shortener functionality, and server performance test results.
 
 [More Details](./apache2/)
 
