@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Servicio DynDNS
+  dyndns:
+    build:
+      context: ./scripts/dyndns
+    container_name: dyndns
+    networks:
+      - default
+
+  # Servicio Nginx
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile  # El Dockerfile de Nginx reemplaza al anterior
+    container_name: nginx
+    ports:
+      - 8080:80
+      - 8443:443
+    depends_on:
+      - dyndns
+    networks:
+      - default
+
+  php-fpm:
+    image: php:8.2-fpm
+    container_name: php-fpm
+    networks:
+      - default
+      
+  # Servicio de monitoreo (Grafana y Prometheus)
+  grafana:
+    build:
+      context: ./scripts/grafana
+      dockerfile: Dockerfile
+    container_name: grafana
+    ports:
+      - "3000:3000"
+      - "9090:9090"
+    depends_on:
+      - nginx
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge

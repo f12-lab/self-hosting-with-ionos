@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido al Infierno</title>
+    <link rel="stylesheet" href="../CSS/all.css"> <!-- Este es tu archivo de estilos común -->
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <a href="/" class="return-button">
+        <span class="exit-icon">
+            <img src="../CSS/run.png" alt="Exit Stickman Running" width="24px" />
+        </span>
+        <span class="exit-text">EXIT</span>
+    </a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Bienvenido al Infierno</h1>
+        </div>
+        <div class="content">
+            <p>Bienvenido a las puertas del Infierno. Explora las secciones a continuación haciendo clic en cada pestaña.</p>
+
+            <div class="accordion-container">
+                <button class="accordion lust" data-target="panel-1">Lujuria</button>
+                <button class="accordion gluttony" data-target="panel-2">Gula</button>
+                <button class="accordion greed" data-target="panel-3">Avaricia</button>
+                <button class="accordion sloth" data-target="panel-4">Pereza</button>
+                <button class="accordion anger" data-target="panel-5">Ira</button>
+                <button class="accordion envy" data-target="panel-6">Envidia</button>
+                <button class="accordion pride" data-target="panel-7">Soberbia</button>
+            </div>            
+
+            <!-- Contenido de las pestañas -->
+            <div id="panel-1" class="panel">
+                <p>Contenido de la Pestaña 1</p>
+            </div>
+
+            <div id="panel-2" class="panel">
+                <p>Contenido de la Pestaña 2</p>
+            </div>
+
+            <div id="panel-3" class="panel">
+                <p>Contenido de la Pestaña 3</p>
+            </div>
+
+            <div id="panel-4" class="panel">
+                <p>Contenido de la Pestaña 4</p>
+            </div>
+
+            <div id="panel-5" class="panel">
+                <p>Contenido de la Pestaña 5</p>
+            </div>
+
+            <div id="panel-6" class="panel">
+                <p>Contenido de la Pestaña 6</p>
+            </div>
+
+            <div id="panel-7" class="panel">
+                <p>Contenido de la Pestaña 7</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Infierno.com | Todos los derechos reservados.</p>
+    </div>
+
+    <script src="../index.js"></script>
+    <script>
+        // Seleccionamos todas las pestañas
+        const acc = document.querySelectorAll('.accordion');
+
+        acc.forEach((button) => {
+            button.addEventListener('click', function() {
+                const targetPanelId = this.getAttribute('data-target');
+                const targetPanel = document.getElementById(targetPanelId);
+
+                // Cerrar todos los paneles antes de abrir el seleccionado
+                const allPanels = document.querySelectorAll('.panel');
+                allPanels.forEach(panel => {
+                    if (panel !== targetPanel) {
+                        panel.classList.remove('active');
+                    }
+                });
+
+                // Alternamos la visibilidad del panel
+                targetPanel.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

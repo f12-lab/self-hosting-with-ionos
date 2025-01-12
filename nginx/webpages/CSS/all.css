@@ -1,0 +1,282 @@
+/* General Styles */
+html, body {
+    height: 100%; /* Asegura que html y body ocupen toda la altura del viewport */
+    margin: 0;
+    padding: 0;
+}
+
+/* Hacemos que body sea un contenedor flexible */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000;
+    color: #00ff00;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+/* Contenedor principal que ocupa el espacio restante */
+.container {
+    flex: 1;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background-color: #000;
+    border: 2px solid #00ff00;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 3px 3px 5px rgba(0, 255, 0, 0.2);
+}
+
+.header h1 {
+    font-size: 36px;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+}
+
+/* Content */
+.content {
+    background-color: #000;
+    border: 2px solid #00ff00;
+    padding: 30px;
+    margin: 20px 0;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+.content p {
+    font-size: 20px;
+    color: #00ff00;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.button-container {
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #00ff00;
+    color: #000;
+    border: 2px solid #00ff00;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    color: #00ff00;
+    background-color: #000;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+/* Accordion (pestañas) */
+.accordion-container {
+    display: flex;            /* Para poner las pestañas en una fila */
+    justify-content: center;
+    gap: 10px;                /* Espaciado entre las pestañas */
+    margin: 20px 0;
+}
+
+.accordion {
+    background-color: #111;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    cursor: pointer;
+    padding: 20px;
+    width: 140px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;                 /* Fija una altura para las pestañas */
+}
+
+/* Colores asociados a cada pecado */
+.accordion.lust:hover {
+    background-color: #ac12a4; /* Lujuria - morado */
+}
+.accordion.gluttony:hover {
+    background-color: #ff69b4; /* Gula - rosa pastel*/
+}
+.accordion.greed:hover {
+    background-color: #B68A00; /* Avaricia - dorado */
+}
+.accordion.sloth:hover {
+    background-color: #595959; /* Pereza - gris */
+}
+.accordion.anger:hover {
+    background-color: #af1414; /* Ira - rojo fuego */
+}
+.accordion.envy:hover {
+    background-color: #3e8e21; /* Envidia - verde claro */
+}
+.accordion.pride:hover {
+    background-color: #0f80c1; /* Soberbia - azul */
+}
+
+.panel {
+    background-color: #111;
+    overflow: hidden;
+    color: #ddd;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-top: 1px solid #00ff00;
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+/* Footer */
+.footer {
+    background-color: #000;
+    color: #00ff00;
+    padding: 10px;
+    font-size: 14px;
+    border-top: 2px solid #00ff00;
+    text-align: center;
+    width: 100%;
+}
+
+/* Canvas background */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #111;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* img */
+.content img {
+    width: 50%;
+    max-width: 500px;
+    height: auto;
+    margin-top: 20px;
+    border: 3px solid #00ff00;
+}
+
+.return-button {
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: #00ff00;
+    border: 2px solid #00ff00;
+    width: 100px;
+    text-decoration: none;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+    z-index: 100;
+}
+
+.exit-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+    margin-right: 5px;
+}
+
+.exit-icon img {
+    width: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Estilo para el texto EXIT */
+.return-button:hover .exit-text {
+    color: #00ff00;
+}
+
+/* Efecto en el ícono al pasar el ratón */
+.return-button:hover .exit-icon img {
+    transform: translateX(10px);  /* Mover el muñeco a la derecha */
+    filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.8));
+}
+
+/* Estilo del botón al pasar el ratón */
+.return-button:hover {
+    background-color: #000;
+    color: #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.9);
+    transition: all 0.3s ease;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+/* Form Styles */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+form input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #00ff00;
+    background: #000;
+    color: #00ff00;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #00ff00;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #00cc00;
+}
+
+/* Message Styles */
+.message a{
+    color: #00ff00;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.message a:visited {
+    color: #070707;
+    text-shadow: 0 0 8px #00ff00;
+}
+
+.message a:hover, .message a:focus {
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+    color: #00ff00;
+}
