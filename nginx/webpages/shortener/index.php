@@ -62,6 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>&copy; 2024 Fondomarcador.com | All rights reserved.</p>
     </div>
     
-    <script src="../index.js"></script>
+    <script src="../Java/index.js"></script>
 </body>
 </html>
