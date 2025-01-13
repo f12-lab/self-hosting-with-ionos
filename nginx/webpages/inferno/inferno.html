@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido al Infierno</title>
     <link rel="stylesheet" href="../CSS/all.css"> <!-- Este es tu archivo de estilos común -->
@@ -15,11 +16,23 @@
         </span>
         <span class="exit-text">EXIT</span>
     </a>
-    
+
     <div class="container">
+        <!-- Header -->
         <div class="header">
             <h1>Bienvenido al Infierno</h1>
+            <a href="../logo.png" download>
+                <div class="tesseract">
+                    <div class="top face"></div>
+                    <div class="bottom face"></div>
+                    <div class="left face"></div>
+                    <div class="right face"></div>
+                    <div class="front face"></div>
+                    <div class="back face"></div>
+                </div>
+            </a>
         </div>
+        <!-- Content Section -->
         <div class="content">
             <p>Bienvenido a las puertas del Infierno. Explora las secciones a continuación haciendo clic en cada pestaña.</p>
 
@@ -33,7 +46,7 @@
                 <button class="accordion pride" data-target="panel-7">Soberbia</button>
             </div>            
 
-            <!-- Contenido de las pestañas -->
+            <!-- Tabs Content -->
             <div id="panel-1" class="panel">
                 <p>Contenido de la Pestaña 1</p>
             </div>
@@ -64,10 +77,12 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer">
         <p>&copy; 2024 Infierno.com | Todos los derechos reservados.</p>
     </div>
 
+    <!-- JavaScript -->
     <script src="../Java/index.js"></script>
     <script src="../Java/pestañas.js"></script>
 
