@@ -354,10 +354,10 @@ form button:hover {
     height: 150px;
     -webkit-transform-style:preserve-3d;
     transform-style:preserve-3d;
-    -webkit-transform:rotateX(75deg) rotate(65deg);
-    transform: rotateX(75deg) rotate(65deg);
-    -webkit-animation: turnPyramid 10s linear infinite;
-    animation: turnPyramid 10s linear infinite;
+    -webkit-transform:rotateX(75deg) rotate(-65deg);
+    transform: rotateX(75deg) rotate(-65deg);
+    -webkit-animation: turnPyramid 15s linear infinite;
+    animation: turnPyramid 15s linear infinite;
     cursor: pointer;
     transform-origin: center;
 }
@@ -397,20 +397,23 @@ form button:hover {
 
 .side1::before {
     border-color: #00cc00 transparent transparent transparent; /* Verde suave */
+    animation: glow 3s linear infinite;
 }
 
 .side2::before {
     border-color: #00cc00 transparent transparent transparent; /* Verde oscuro */
+    animation: glow 3s linear infinite;
 }
 
 .side3::before {
     border-color: #00cc00 transparent transparent transparent; /* Verde claro */
+    animation: glow 3s linear infinite;
 }
 
 .side4::before {
     border-color: #00cc00 transparent transparent transparent; /* Verde brillante */
+    animation: glow 3s linear infinite;
 }
-
 
 @-webkit-keyframes turnPyramid{
     100%{
@@ -420,5 +423,18 @@ form button:hover {
 @keyframes turnPyramid{
     100%{
         transform: rotateX(75deg) rotate(-425deg);
+    }
+}
+
+/* Animación del brillo */
+@keyframes glow {
+    0% {
+        filter: brightness(0.5);  /* Más oscuro */
+    }
+    50% {
+        filter: brightness(1.5);  /* Más brillante */
+    }
+    100% {
+        filter: brightness(0.5);  /* Regreso al estado oscuro */
     }
 }
