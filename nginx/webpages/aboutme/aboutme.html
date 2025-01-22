@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="../CSS/all.css">
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <a href="/" class="return-button">
+        <span class="exit-icon">
+            <img src="../CSS/run.png" alt="Exit Stickman Running" width="24px" />
+        </span>
+        <span class="exit-text">EXIT</span>
+    </a>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Sobre mí</h1>
+            <p>Bienvenido a mis repositorios más destacados</p>
+        </div>
+
+        <!-- Project Cards -->
+        <div class="project-card" data-target="details-1">
+            <div class="project-header">NetHunter rootless guide</div>
+            <div class="project-description">Guía para instalar y configurar Kali NetHunter en Android usando Termux, sin necesidad de root.</div>
+            <div id="details-1" class="project-details">
+                <hr>
+                <p><strong>Objetivo del Proyecto:</strong> Facilitar la instalación y configuración de Kali Linux en Android mediante Termux, permitiendo su uso sin modificar el sistema operativo principal.</p>
+
+                <p><strong>Características Principales:</strong></p>
+                <ul>
+                    <li>Acceso completo al entorno Kali Linux en dispositivos Android.</li>
+                    <li>Instalación simple usando Termux y configuración gráfica con NetHunter KeX.</li>
+                    <li>Solución a problemas como configuración de DNS, cierre automático de apps en Android 12/13, y habilitación de audio en GUI.</li>
+                </ul>
+                
+                <p><strong>Pasos Clave:</strong></p>
+                <ol>
+                    <li><b>Instalación de Termux:</b> Descarga desde F-Droid y ejecuta <code>pkg update</code> para actualizar paquetes.</li>
+                    <li><b>Instalación de NetHunter:</b> Descarga y ejecuta el script oficial con permisos adecuados.</li>
+                    <li><b>Configuración GUI:</b> Usa NetHunter KeX para establecer una conexión gráfica tras configurar la contraseña con <code>nethunter kex passwd</code>.</li>
+                    <li><b>Solución de problemas:</b> 
+                        <ul>
+                            <li>DNS: Editar <code>/etc/resolv.conf</code> con <code>8.8.8.8</code>.</li>
+                            <li>Cierres automáticos: Desactivar el "Phantom Process Killer" en Android 12/13 usando comandos <code>adb</code>.</li>
+                            <li>Sonido: Configurar PulseAudio en Termux para habilitar audio.</li>
+                            <li>Firefox: Ajustar sandbox desde <code>about:config</code>.</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <p><strong>Licencia:</strong> Licencia GNU</p>
+                <p><strong>Autor:</strong> F12-Lab</p>
+                <a href="https://github.com/f12-lab/kalinethunter-rootless-and-kex" target="_blank">
+                    <button class="project-button">Acceder al Repositorio</button>
+                </a>
+            </div>
+        </div>
+        
+        <div class="project-card" data-target="details-2">
+            <div class="project-header">Proyecto 2</div>
+            <div class="project-description">Este proyecto es acerca de...</div>
+            <div id="details-2" class="project-details">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Fondomarcador.com | All rights reserved.</p>
+    </div>
+    
+    <script src="../Java/index.js"></script>
+    <script src="../Java/project.js"></script>
+</body>
+</html>

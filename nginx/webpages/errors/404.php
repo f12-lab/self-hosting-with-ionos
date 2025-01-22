@@ -23,7 +23,7 @@
     </div>
 
     <div class="footer">
-        <p>&copy; 2024 Fondomarcador.com | All rights reserved.</p>
+        <p>&copy; 2025 Fondomarcador.com | All rights reserved.</p>
     </div>
     
     <script src="../index.js"></script>
