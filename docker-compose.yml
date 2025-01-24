@@ -18,6 +18,7 @@ services:
     ports:
       - 8080:80
       - 8443:443
+      - 1935:1935
     depends_on:
       - dyndns
     networks:

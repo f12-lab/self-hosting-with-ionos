@@ -7,6 +7,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     nginx \
+    libnginx-mod-rtmp \
+    ffmpeg\
+    python3\
+    python3-pip\
+    python3-venv\
     php-fpm \
     openssl \
     curl \
@@ -55,8 +60,11 @@ RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php/*/fpm/php.ini
 COPY nginx/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+# Copiar bot telegram
+COPY TelegramBot/ /usr/local/bin/telegram
+
 # Exponer puertos para HTTP y HTTPS
-EXPOSE 80 443
+EXPOSE 80 443 1935
 
 # Comando para ejecutar Nginx en primer plano
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
