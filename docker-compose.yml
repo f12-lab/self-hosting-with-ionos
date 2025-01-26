@@ -29,20 +29,6 @@ services:
     container_name: php-fpm
     networks:
       - default
-      
-  # Servicio de monitoreo (Grafana y Prometheus)
-  grafana:
-    build:
-      context: ./scripts/grafana
-      dockerfile: Dockerfile
-    container_name: grafana
-    ports:
-      - "3000:3000"
-      - "9090:9090"
-    depends_on:
-      - nginx
-    networks:
-      - default
 
 networks:
   default:
