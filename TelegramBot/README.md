@@ -56,7 +56,9 @@ Cuando el entorno esté activo, deberías ver algo como (myenv) antes de la lín
 Instala la librería python-telegram-bot utilizando pip dentro del entorno virtual:
 
 ``` bash
-pip install python-telegram-bot
+cd /usr/local/bin/telegram
+rm -rf myenv
+pip install python_dotenv python-telegram-bot yt_dlp flask requests
 ```
 
 ### 7. Iniciar el bot
@@ -96,3 +98,5 @@ Hacer un entorno, entrar y
 python3 bot.py && python3 backend.py
 ```
 Esto se pondrá más adelante 
+
+https://medium.com/@peer5/setting-up-hls-live-streaming-server-using-nginx-67f6b71758db

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming HLS - Video.js</title>
+    
+    <!-- Estilos de Video.js -->
+    <link href="https://vjs.zencdn.net/8.3.0/video-js.min.css" rel="stylesheet">
+
+    <!-- Estilo personalizado (Matrix Theme) -->
+    <link href="../CSS/videojs-matrix.css" rel="stylesheet">
+
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <a href="/" class="return-button">
+        <span class="exit-icon">
+            <img src="../CSS/run.png" alt="Exit Stickman Running" width="24px" />
+        </span>
+        <span class="exit-text">EXIT</span>
+    </a>
+
+    <div class="header">
+        <h1>FondoStreaming</h1>
+    </div>
+    
+    <div class="video-container">
+        <video id="my-video" class="video-js vjs-matrix vjs-big-play-centered" controls preload="auto">
+            <source src="https://fondomarcador.com/videos/hls/stream.m3u8" type="application/x-mpegURL">
+            Tu navegador no soporta la reproducción de video.
+        </video>
+    </div>
+
+    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
+
+    <script>
+        var player = videojs('my-video', {
+            fluid: true,
+            autoplay: false,
+            preload: 'auto'
+        });
+    </script>
+
+    <div class="footer">
+        <p>&copy; 2025 Fondomarcador.com | All rights reserved.</p>
+    </div>
+
+    <script src="../Java/index.js"></script>
+</body>
+</html>

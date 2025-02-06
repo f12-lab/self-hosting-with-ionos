@@ -8,10 +8,10 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     nginx \
     libnginx-mod-rtmp \
-    ffmpeg\
-    python3\
-    python3-pip\
-    python3-venv\
+    ffmpeg \
+    python3 \
+    python3-pip \
+    python3-venv \
     php-fpm \
     openssl \
     curl \
@@ -23,7 +23,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Crear directorios esenciales con permisos adecuados
-RUN mkdir -p /var/log/nginx /var/run/nginx /etc/nginx/ssl /var/www/webpages && \
+RUN mkdir -p /var/log/nginx /var/run/nginx /etc/nginx/ssl /var/www/webpages /usr/local/bin/telegram && \
     chown -R www-data:www-data /var/www/webpages /var/log/nginx /var/run/nginx && \
     chmod -R 755 /var/www/webpages
 
@@ -56,15 +56,23 @@ RUN ln -s /etc/nginx/sites-available/fondomarcador /etc/nginx/sites-enabled/
 # Configurar PHP-FPM (descomentando la configuración necesaria en php.ini)
 RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php/*/fpm/php.ini
 
+# Copiar bot de Telegram
+COPY TelegramBot/ /usr/local/bin/telegram
+
+# Definir el directorio de trabajo
+WORKDIR /usr/local/bin/telegram
+
+# Crear el entorno virtual e instalar dependencias
+RUN python3 -m venv myenv && \
+    /usr/local/bin/telegram/myenv/bin/python -m ensurepip && \
+    /usr/local/bin/telegram/myenv/bin/python -m pip install --no-cache-dir python_dotenv python-telegram-bot yt_dlp flask requests
+
 # Copiar script de entrada
 COPY nginx/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Copiar bot telegram
-COPY TelegramBot/ /usr/local/bin/telegram
+# Exponer puertos para HTTP, HTTPS y el bot Flask
+EXPOSE 80 443 1935 5000
 
-# Exponer puertos para HTTP y HTTPS
-EXPOSE 80 443 1935
-
-# Comando para ejecutar Nginx en primer plano
+# Ejecutar el entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
