@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Servicio DynDNS
   dyndns:
@@ -13,7 +11,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: nginx/Dockerfile  # El Dockerfile de Nginx reemplaza al anterior
+      dockerfile: nginx/Dockerfile 
     container_name: nginx
     ports:
       - 8080:80
@@ -24,6 +22,7 @@ services:
     networks:
       - default
 
+  # Servicio PHP
   php-fpm:
     image: php:8.2-fpm
     container_name: php-fpm
