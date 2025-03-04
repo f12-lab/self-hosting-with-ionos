@@ -16,8 +16,6 @@ scripts/
     └── prometheus.yml
 ```
 
----
-
 ## Dynamic DNS
 
 The dynamic DNS setup ensures that the IP addresses for the domain `fondomarcador.com` and its subdomains are always up-to-date.
