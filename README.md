@@ -1,5 +1,15 @@
 # Self hosting with IONOS
 
+> [!IMPORTANT]  
+> This Readme is under construction
+
+ ## Visit other Readme files:
+
+- [TelegramBot](./TelegramBot/README.md)
+- [Icecast](./icecast/README.md)
+
+<!-- # Self hosting with IONOS
+
 Welcome to the **Fondomarcador.com**! This repository contains the infrastructure and configurations for setting up a web server and its associated tools. The primary goal of this project is to deploy a robust and functional environment with features like dynamic DNS, SSL certificates, monitoring, and a URL shortener application, using vagrant and ansible.
 
 ## Features
@@ -134,4 +144,4 @@ This project is licensed under the GNU GPLv3 License. See the [LICENSE](./LICENS
 
 ## Contact
 
-For any questions, reach out at [malutrab63@gmail.com](mailto:malutrab63@gmail.com).
+For any questions, reach out at [malutrab63@gmail.com](mailto:malutrab63@gmail.com). -->

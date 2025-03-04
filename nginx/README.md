@@ -1,4 +1,7 @@
-# Apache2 Configuration and Webpages
+> [!IMPORTANT]  
+> This Readme is under construction
+
+<!-- # Apache2 Configuration and Webpages
 
 ## Apache2 Configuration Files
 
@@ -278,4 +281,4 @@ Apache Benchmark (`ab`) was used to evaluate the server’s performance. Multipl
 ---
 
 ## Conclusion
-This directory integrates essential configurations and functionalities for `fondomarcador.com`. It combines Apache2’s flexibility with a custom URL shortener to provide a secure and robust web experience. For detailed provisioning, refer to the [apache.yml](../ansible/tasks/apache.yml) file. While functional under typical load, the system experiences performance issues during high concurrency tests. These observations underscore the importance of proactive scaling and caching strategies to enhance reliability during peak traffic periods.
+This directory integrates essential configurations and functionalities for `fondomarcador.com`. It combines Apache2’s flexibility with a custom URL shortener to provide a secure and robust web experience. For detailed provisioning, refer to the [apache.yml](../ansible/tasks/apache.yml) file. While functional under typical load, the system experiences performance issues during high concurrency tests. These observations underscore the importance of proactive scaling and caching strategies to enhance reliability during peak traffic periods. -->

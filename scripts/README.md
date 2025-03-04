@@ -1,4 +1,7 @@
-# Scripts Directory Documentation
+> [!IMPORTANT]  
+> This Readme is under construction
+
+<!-- # Scripts Directory Documentation
 
 The `scripts` directory contains automation and configuration scripts divided into two primary sections: **Dynamic DNS** and **Monitoring**. These scripts streamline domain management and enable server performance tracking through Grafana, Prometheus, and Apache Exporter.
 
@@ -175,4 +178,4 @@ A preconfigured dashboard offers visual insights into server activity and health
 
 ## Conclusion
 
-The scripts in this directory enable seamless dynamic DNS updates and comprehensive server monitoring through well-integrated tools. For detailed provisioning, refer to the [monitoring.yml](../ansible/tasks/monitoring.yml) file, which automates setup for Prometheus, Grafana, and Apache Exporter. Together, these tools ensure a reliable and scalable infrastructure for `fondomarcador.com`. The Grafana dashboard provides real-time metrics to visualize the health and performance of your server infrastructure.
+The scripts in this directory enable seamless dynamic DNS updates and comprehensive server monitoring through well-integrated tools. For detailed provisioning, refer to the [monitoring.yml](../ansible/tasks/monitoring.yml) file, which automates setup for Prometheus, Grafana, and Apache Exporter. Together, these tools ensure a reliable and scalable infrastructure for `fondomarcador.com`. The Grafana dashboard provides real-time metrics to visualize the health and performance of your server infrastructure. -->

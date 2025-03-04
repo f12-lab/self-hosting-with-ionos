@@ -4,17 +4,18 @@ Este documento describe cómo configurar Icecast y ICES2 para transmitir una rad
 
 ## Estructura de archivos
 
-```bash
-icecast.xml
-ices2
-├── Dockerfile
-└── ices-playlist.xml
-mymusic
-├── Entradilla1.ogg
-├── Entradilla2.ogg
-├── Entradilla3.ogg
-└── list.txt
-README.md
+```plaintext
+icecast/
+├── icecast.xml
+├── ices2
+│   ├── Dockerfile
+│   └── ices-playlist.xml
+├── mymusic
+│   ├── Entradilla1.ogg
+│   ├── Entradilla2.ogg
+│   ├── Entradilla3.ogg
+│   └── list.txt
+└── README.md
 ```
 
 ## Archivos de configuración

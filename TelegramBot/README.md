@@ -4,14 +4,15 @@ Este proyecto contiene tres bots que automatizan la descarga y transmisión de v
 
 ## Estructura de archivos
 
-```bash
-backend.py
-bot.py
-Docker
-Dockerfile
-└── entrypoint.sh
-icecast.py
-README.md
+```plaintext
+TelegramBot/
+├── backend.py
+├── bot.py
+├── Docker
+│   ├── Dockerfile
+│   └── entrypoint.sh
+├── icecast.py
+└── README.md
 ```
 
 ## Diagrama de flujo 
