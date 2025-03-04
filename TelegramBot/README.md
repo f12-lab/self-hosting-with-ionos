@@ -107,7 +107,7 @@ Este servidor Flask recibe URLs de videos, los descarga y los convierte en un fo
 3. **Convierte el video a HLS** con `ffmpeg`, generando fragmentos `.ts` y una lista de reproducción `.m3u8`.
 4. **Responde con la URL del stream** para que el bot la comparta con el usuario.
 
-### Código Destacado
+### Código del proceso
 
 ```python
 @app.route("/process", methods=["POST"])
@@ -148,7 +148,7 @@ Este servidor Flask descarga audios y los transmite a través de Icecast.
 3. **Agrega el archivo a una lista de reproducción** utilizada por Icecast.
 4. **Responde con la URL del stream** para que el bot la comparta con el usuario.
 
-### Código Destacado
+### Código del proceso
 
 ```python
 @app.route("/process_audio", methods=["POST"])
