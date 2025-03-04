@@ -6,7 +6,7 @@ import yt_dlp
 app = Flask(__name__)
 
 # Ruta local para guardar los archivos descargados
-DOWNLOAD_DIR = "/var/www/webpages/videos/hls"
+DOWNLOAD_DIR = "/videos"
 
 if not os.path.exists(DOWNLOAD_DIR):
     os.makedirs(DOWNLOAD_DIR)

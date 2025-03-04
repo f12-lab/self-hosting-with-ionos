@@ -64,11 +64,8 @@ async def receive_url_a(update: Update, context: CallbackContext) -> int:
 
         if response.status_code == 200:
             stream_link = response.json().get("stream_link", "")
-            mobile_link = "https://fondomarcador.com/videos/hls/stream.m3u8"
             if stream_link:
-                await update.message.reply_text(f"Your stream is live here:\n"
-                                                f"- Mobile: {mobile_link}\n"
-                                                f"- PC: {stream_link}")
+                await update.message.reply_text(f"Your stream is live here:{stream_link}\n")
             else:
                 await update.message.reply_text("Streaming started but no stream link available.")
         else:

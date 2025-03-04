@@ -8,14 +8,10 @@ app = Flask(__name__)
 
 # Configuración de Icecast
 load_dotenv()  # Carga las variables del archivo .env
-ICECAST_SERVER = os.getenv("ICECAST_SERVER")
-ICECAST_MOUNTPOINT = os.getenv("ICECAST_MOUNTPOINT")
-ICECAST_USER = os.getenv("ICECAST_USER")
-ICECAST_PASSWORD = os.getenv("ICECAST_PASSWORD")
 
 # Ruta local para guardar los archivos descargados
-DOWNLOAD_DIR = "/home/musica/"
-PLAYLIST_FILE = "/home/musica/lista.txt"
+DOWNLOAD_DIR = "/songs"
+PLAYLIST_FILE = "/songs/list.txt"
 if not os.path.exists(DOWNLOAD_DIR):
     os.makedirs(DOWNLOAD_DIR)
 
@@ -48,10 +44,7 @@ def process_audio():
         with open(PLAYLIST_FILE, "a") as playlist:
             playlist.write(final_path + "\n")
 
-        # Ejecutar Ices con el archivo de configuración de la playlist
-        subprocess.Popen(["ices2", "/etc/ices2/ices-playlist.xml"])
-
-        stream_link = f"{ICECAST_SERVER}/{ICECAST_MOUNTPOINT}"
+        stream_link = f"https://fondomarcador.com/icecast/"
         return jsonify({"stream_link": stream_link})
 
     except Exception as e:

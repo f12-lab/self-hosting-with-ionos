@@ -9,9 +9,6 @@ RUN apt-get update && \
     nginx \
     libnginx-mod-rtmp \
     ffmpeg \
-    icecast2 \
-    ices2 \
-    vorbis-tools \
     python3 \
     python3-pip \
     python3-venv \
@@ -58,44 +55,23 @@ RUN ln -s /etc/nginx/sites-available/fondomarcador /etc/nginx/sites-enabled/
 # Configurar PHP-FPM (descomentando la configuración necesaria en php.ini)
 RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php/*/fpm/php.ini
 
-# Copiar bot de Telegram
-COPY TelegramBot/ /usr/local/bin/telegram
+# # Copiar bot de Telegram
+# COPY TelegramBot/ /usr/local/bin/telegram
 
-# Asegurarse de crear el grupo y usuario correctamente
-RUN useradd -r -g icecast icecast
+# # Definir el directorio de trabajo
+# WORKDIR /usr/local/bin/telegram
 
-# Copiar y configurar el archivo de configuración de Icecast
-COPY icecast/icecast.xml /etc/icecast2/icecast.xml
-RUN chown -R root:root /etc/icecast2 && chmod -R 755 /etc/icecast2
-
-# Configurar directorios adicionales
-RUN mkdir /etc/ices2 && chown -R root:root /etc/ices2 && chmod -R 755 /etc/ices2
-COPY icecast/ices-playlist.xml /etc/ices2/ices-playlist.xml
-
-# Configurar directorios para la música y archivos
-RUN mkdir /home/musica
-COPY icecast/lista.txt /home/musica/lista.txt
-COPY icecast/mymusic/Prueba.ogg /home/musica/Prueba.ogg
-RUN chown -R root:root /home/musica && chmod -R 755 /home/musica
-
-# Configurar directorios para los logs
-RUN mkdir -p /var/log/ices && chown -R root:root /var/log/ices && chmod -R 755 /var/log/ices
-RUN touch /var/log/ices/ices.log && chown root:root /var/log/ices/ices.log && chmod 644 /var/log/ices/ices.log
-
-# Definir el directorio de trabajo
-WORKDIR /usr/local/bin/telegram
-
-# Crear el entorno virtual e instalar dependencias
-RUN python3 -m venv myenv && \
-    /usr/local/bin/telegram/myenv/bin/python -m ensurepip && \
-    /usr/local/bin/telegram/myenv/bin/python -m pip install --no-cache-dir python_dotenv python-telegram-bot yt_dlp flask requests
+# # Crear el entorno virtual e instalar dependencias
+# RUN python3 -m venv myenv && \
+#     /usr/local/bin/telegram/myenv/bin/python -m ensurepip && \
+#     /usr/local/bin/telegram/myenv/bin/python -m pip install --no-cache-dir python_dotenv python-telegram-bot yt_dlp flask requests
 
 # Copiar script de entrada
 COPY nginx/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Exponer puertos para HTTP, HTTPS y el bot Flask
-EXPOSE 80 443 1935 5000 5001 8000
+EXPOSE 80 443 1935
 
 # Ejecutar el entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
