@@ -5,8 +5,8 @@
 
  ## Visit other Readme files:
 
-- [TelegramBot](./TelegramBot/README.md)
-- [Icecast](./icecast/README.md)
+- [TelegramBot](./scripts/telegramBot/README.md)
+- [Icecast](./config/icecast/README.md)
 
 <!-- # Self hosting with IONOS
 
