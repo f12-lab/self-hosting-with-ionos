@@ -38,19 +38,19 @@ Este archivo crea una imagen de Docker que contiene ICES2 configurado para trans
 
 También hay que tener en cuenta que hay otro contenedor en el Docker-Compose para Icecast2, con la imagen de `libretime/icecast`, perfecta para aarch64.
 
-[Ver Docker-Compose](../docker-compose.yml#L34)
+[Ver Docker-Compose](../../docker-compose.yml#L34)
 
 ### 5. `fondomarcador.conf`
 
 Este archivo configura Nginx para servir como proxy inverso para Icecast y otros servicios en `fondomarcador.com`.
 
-[Ver configuración](../nginx/nginxconf/fondomarcador.conf#L108)
+[Ver configuración](../../src/nginx/nginxconf/fondomarcador.conf#L108)
 
 ### 6. `icecast.py`
 
 Este archivo automatiza la descarga del video que se le pasa al bot de telegram. Su contenedor tiene un volumen compartido con el contenedor de ICES2, enviando las canciones y la modificación de la lista a ices2 directamente.
 
-[Ver Documentación](../TelegramBot/README.md)
+[Ver Documentación](../../scripts/telegramBot/README.md)
 
 ## Configuración de archivos
 

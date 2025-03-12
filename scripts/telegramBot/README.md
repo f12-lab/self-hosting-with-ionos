@@ -69,7 +69,7 @@ flowchart LR
     STREAM -->|10: Cliente escucha la radio|C
 ```
 
-## `Dockerfile` - [Dockerfile](./Docker/Dockerfile)
+## `Dockerfile` - [Dockerfile](./docker/Dockerfile)
 
 Este Dockerfile es el encargado de tener las dependencias y librerias, además de iniciar automáticamente los .py
 
