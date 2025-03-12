@@ -56,7 +56,7 @@ RUN ln -s /etc/nginx/sites-available/fondomarcador /etc/nginx/sites-enabled/
 RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php/*/fpm/php.ini
 
 # Copiar script de entrada
-COPY src/nginx/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY src/nginx/docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Exponer puertos para HTTP, HTTPS y el bot Flask

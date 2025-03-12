@@ -49,7 +49,7 @@ services:
   ices2:
     build:
       context: .
-      dockerfile: icecast/ices2/Dockerfile 
+      dockerfile: config/icecast/ices2/Dockerfile 
     container_name: ices2
     depends_on:
       - icecast
@@ -62,7 +62,7 @@ services:
   telegram:
     build:
       context: .
-      dockerfile: telegramBot/docker/Dockerfile
+      dockerfile: scripts/telegramBot/docker/Dockerfile
     container_name: telegram
     volumes:
       - ./src/nginx/webpages/videos/hls:/videos

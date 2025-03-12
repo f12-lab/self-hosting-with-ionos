@@ -7,7 +7,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Copiar bot de Telegram
-COPY TelegramBot/ /usr/local/bin/telegram
+COPY scripts/telegramBot/ /usr/local/bin/telegram
 
 RUN mkdir /songs /videos
 
@@ -20,7 +20,7 @@ RUN python3 -m venv myenv && \
     /usr/local/bin/telegram/myenv/bin/python -m pip install --no-cache-dir python_dotenv python-telegram-bot yt_dlp flask requests
 
 # Copiar script de entrada
-COPY TelegramBot/Docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY scripts/telegramBot/docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
