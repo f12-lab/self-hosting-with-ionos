@@ -26,7 +26,7 @@
         <p>&copy; 2025 Fondomarcador.com | All rights reserved.</p>
     </div>
     
-    <script src="../index.js"></script>
+    <script src="../Java/index.js"></script>
 </body>
 </html>
 
