@@ -33,7 +33,7 @@ COPY .certs/intermediate2.cer /etc/nginx/ssl/
 RUN chmod 600 /etc/nginx/ssl/*.key && chmod 644 /etc/nginx/ssl/*.cer
 
 # Copiar archivos de configuración y páginas web
-COPY nginx/webpages/ /var/www/webpages/
+COPY src/nginx/webpages/ /var/www/webpages/
 RUN chown -R www-data:www-data /var/www/webpages && chmod -R 755 /var/www/webpages
 
 COPY .htpasswd/.htpasswd_admin /etc/nginx/.htpasswd_admin
@@ -42,12 +42,12 @@ RUN chown www-data:www-data /etc/nginx/.htpasswd_admin && chmod 644 /etc/nginx/.
 COPY .htpasswd/.htpasswd_sysadmin /etc/nginx/.htpasswd_sysadmin
 RUN chown www-data:www-data /etc/nginx/.htpasswd_sysadmin && chmod 644 /etc/nginx/.htpasswd_sysadmin
 
-COPY nginx/webpages/shortener/.env /var/www/webpages/shortener/.env
+COPY src/nginx/webpages/shortener/.env /var/www/webpages/shortener/.env
 RUN chown www-data:www-data /var/www/webpages/shortener/.env && chmod 775 /var/www/webpages/shortener/.env
 
 # Copiar archivos de configuración de Nginx
-COPY nginx/nginxconf/fondomarcador.conf /etc/nginx/sites-available/fondomarcador
-COPY nginx/nginxconf/nginx.conf /etc/nginx/nginx.conf
+COPY src/nginx/nginxconf/fondomarcador.conf /etc/nginx/sites-available/fondomarcador
+COPY src/nginx/nginxconf/nginx.conf /etc/nginx/nginx.conf
 
 # Crear enlaces simbólicos para habilitar el sitio y servicios de Nginx
 RUN ln -s /etc/nginx/sites-available/fondomarcador /etc/nginx/sites-enabled/
@@ -55,19 +55,8 @@ RUN ln -s /etc/nginx/sites-available/fondomarcador /etc/nginx/sites-enabled/
 # Configurar PHP-FPM (descomentando la configuración necesaria en php.ini)
 RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php/*/fpm/php.ini
 
-# # Copiar bot de Telegram
-# COPY TelegramBot/ /usr/local/bin/telegram
-
-# # Definir el directorio de trabajo
-# WORKDIR /usr/local/bin/telegram
-
-# # Crear el entorno virtual e instalar dependencias
-# RUN python3 -m venv myenv && \
-#     /usr/local/bin/telegram/myenv/bin/python -m ensurepip && \
-#     /usr/local/bin/telegram/myenv/bin/python -m pip install --no-cache-dir python_dotenv python-telegram-bot yt_dlp flask requests
-
 # Copiar script de entrada
-COPY nginx/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY src/nginx/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Exponer puertos para HTTP, HTTPS y el bot Flask
