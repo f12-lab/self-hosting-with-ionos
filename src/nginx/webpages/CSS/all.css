@@ -215,6 +215,23 @@ hr {
     display: block;
 }
 
+
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.image {
+    margin-right: 20px;
+}
+
+.text {
+    max-width: 60%;
+    text-align: left;
+}
+
 /* Footer */
 .footer {
     background-color: #000;
