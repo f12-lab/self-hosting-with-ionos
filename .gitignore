@@ -2,3 +2,5 @@
 .env
 .htpasswd/
 .certs/
+config/icecast/mymusic
+src/nginx/webpages/inferno/*/*.7z

@@ -65,14 +65,25 @@ docker load -i "$TAR_FILE" || { echo -e "${CRE}Error al cargar la imagen Docker.
 echo -e "${CGR}Desplegando la máquina vulnerable...${CNC}"
 if [ -f "docker-compose.yml" ]; then
     docker-compose up -d
+
+    echo -e "${CBLE}IPs de los servicios desplegados:${CNC}"
+    
+    # Obtener todos los contenedores del proyecto docker-compose
+    CONTAINERS=$(docker-compose ps -q)
+
+    for cid in $CONTAINERS; do
+        NAME=$(docker inspect -f '{{.Name}}' "$cid" | sed 's/^\/\(.*\)/\1/')
+        IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$cid")
+        echo -e "  ${CBK}$NAME${CNC} -> ${CBLE}$IP${CNC}"
+    done
 else
     docker run -d --name $CONTAINER_NAME $IMAGE_NAME
+
+    # Obtener la IP del contenedor
+    IP_ADDRESS=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_NAME 2>/dev/null)
+    echo -e "${CBLE}Máquina desplegada con IP: ${CBK}$IP_ADDRESS${CNC}"
 fi
 
-# Obtener la IP del contenedor
-IP_ADDRESS=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_NAME 2>/dev/null)
-
-echo -e "${CBLE}Máquina desplegada con IP: ${CBK}$IP_ADDRESS${CNC}"
 echo -e "${CRE}Presiona Ctrl+C cuando termines para eliminar la máquina${CNC}"
 
 # Capturar Ctrl+C para limpiar

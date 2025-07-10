@@ -42,6 +42,9 @@ RUN chown www-data:www-data /etc/nginx/.htpasswd_admin && chmod 644 /etc/nginx/.
 COPY .htpasswd/.htpasswd_sysadmin /etc/nginx/.htpasswd_sysadmin
 RUN chown www-data:www-data /etc/nginx/.htpasswd_sysadmin && chmod 644 /etc/nginx/.htpasswd_sysadmin
 
+COPY .htpasswd/.htpasswd_dante /etc/nginx/.htpasswd_dante
+RUN chown www-data:www-data /etc/nginx/.htpasswd_dante && chmod 644 /etc/nginx/.htpasswd_dante
+
 COPY src/nginx/webpages/shortener/.env /var/www/webpages/shortener/.env
 RUN chown www-data:www-data /var/www/webpages/shortener/.env && chmod 775 /var/www/webpages/shortener/.env
 
