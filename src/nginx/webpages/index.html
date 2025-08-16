@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Fondomarcador.com</title>
+    <title>Fondomarcador</title>
     <link rel="stylesheet" href="CSS/all.css">
 </head>
 <body>
@@ -11,20 +11,49 @@
     
     <div class="container">
         <div class="header">
-            <h1>Welcome to Fondomarcador.com</h1>
+            <h1>Bienvenido a Fondomarcador.com</h1>
         </div>
         <div class="content">
-            <p>Thank you for visiting our server. Here you will find everything you need to start interacting with our system.</p>
-            <p>If you have any questions, feel free to contact us.</p>
-        </div>
+            <p>Gracias por visitar mi servidor. Aquí encontrará diversas herramientas, proyectos e información sobre mí.</P> 
+            <p>Si tiene alguna pregunta, no dude en contactar conmigo.</p>
         
-        <div class="button-container">
-            <a href="/aboutme" class="button">About Me</a>
-            <a href="/admin" class="button">Go to Admin</a>
-            <a href="/shortener" class="button">Shortener</a>
-            <a href="/inferno" class="button">Inferno</a>
-            <a href="/videos/" class="button">Videos</a>
-            <a href="/icecast/" class="button">FondoRadio</a>
+
+            <div class="button-container">
+                <a href="/aboutme" class="button">About Me</a>
+
+                <!-- <a href="/admin" class="button">Go to Admin</a> -->
+
+                <a href="/inferno" class="button">Inferno</a>
+
+                <a id="openToolsPopup" class="button">Herramientas</a>
+
+                <!-- Popup de Herramientas -->
+                <div id="toolsPopup" class="tools-popup">
+                    <div class="popup-content">
+                        <span class="close-popup">&times;</span>
+                        <div class="tools-list">
+                            <div class="tool-item">
+                                <a href="/shortener">
+                                <img src="CSS/popupTools/shortener.png" alt="Shortener">
+                                <p>Shortener</p>
+                                </a>
+                            </div>
+                            <div class="tool-item">
+                                <a href="/videos/">
+                                <img src="CSS/popupTools/video.png" alt="Videos">
+                                <p>FondoStreaming</p>
+                                </a>
+                            </div>
+                            <div class="tool-item">
+                                <a href="/icecast/">
+                                <img src="CSS/popupTools/radio.png" alt="FondoRadio">
+                                <p>FondoRadio</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -33,6 +62,7 @@
     </div>
 
     <script src="Java/index.js"></script>
+    <script src="Java/popup.js"></script>
 
 </body>
 </html>

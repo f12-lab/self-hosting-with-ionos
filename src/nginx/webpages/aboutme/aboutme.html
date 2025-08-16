@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
+    <title>Sobre mí</title>
     <link rel="stylesheet" href="../CSS/all.css">
 </head>
 <body>
@@ -20,83 +20,119 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>Sobre mí</h1>
-            <p>Bienvenido a mis repositorios más destacados</p>
-        </div>
+            <h1>Manuel L. Quero</h1>
 
-        <!-- Project Cards -->
-        <div class="project-card" data-target="details-1">
-            <div class="project-header">NetHunter rootless guide</div>
-            <div class="project-description">Guía para instalar y configurar Kali NetHunter en Android usando Termux, sin necesidad de root.</div>
-            <div id="details-1" class="project-details">
-                <hr>
-                <p><strong>Objetivo del Proyecto:</strong> Facilitar la instalación y configuración de Kali Linux en Android mediante Termux, permitiendo su uso sin modificar el sistema operativo principal.</p>
+            <p>Soy Técnico Superior en Administración de Sistemas Informáticos en Red (ASIR), donde adquirí una sólida base en administración de sistemas operativos, bases de datos, redes y otras competencias. Aunque mi mayor pasión es la ciberseguridad, en la que llevo unos años formándome de manera autodidacta para adquirir conocimientos prácticos.</p> 
+            <p>Actualmente he decidido continuar mi desarrollo académico cursando la carrera de Ingeniería Informática, con el objetivo de ampliar mis conocimientos, reforzar mis competencias y asumir proyectos de mayor alcance en el ámbito de la seguridad y la infraestructura IT.</p>
+            <p>Paralelamente, me encanta probar nuevas herramientas y sistemas de código abierto, lo que me ha llevado a adoptar Linux como entorno principal de trabajo, explorando distribuciones como Debian o sistemas más especializados como Qubes OS.</p>
 
-                <p><strong>Características Principales:</strong></p>
-                <ul>
-                    <li>Acceso completo al entorno Kali Linux en dispositivos Android.</li>
-                    <li>Instalación simple usando Termux y configuración gráfica con NetHunter KeX.</li>
-                    <li>Solución a problemas como configuración de DNS, cierre automático de apps en Android 12/13, y habilitación de audio en GUI.</li>
-                </ul>
-                
-                <p><strong>Pasos Clave:</strong></p>
-                <ol>
-                    <li><b>Instalación de Termux:</b> Descarga desde F-Droid y ejecuta <code>pkg update</code> para actualizar paquetes.</li>
-                    <li><b>Instalación de NetHunter:</b> Descarga y ejecuta el script oficial con permisos adecuados.</li>
-                    <li><b>Configuración GUI:</b> Usa NetHunter KeX para establecer una conexión gráfica tras configurar la contraseña con <code>nethunter kex passwd</code>.</li>
-                    <li><b>Solución de problemas:</b> 
-                        <ul>
-                            <li>DNS: Editar <code>/etc/resolv.conf</code> con <code>8.8.8.8</code>.</li>
-                            <li>Cierres automáticos: Desactivar el "Phantom Process Killer" en Android 12/13 usando comandos <code>adb</code>.</li>
-                            <li>Sonido: Configurar PulseAudio en Termux para habilitar audio.</li>
-                            <li>Firefox: Ajustar sandbox desde <code>about:config</code>.</li>
-                        </ul>
-                    </li>
-                </ol>
-                
-                <p><strong>Licencia:</strong> Licencia GNU</p>
-                <p><strong>Autor:</strong> F12-Lab</p>
-                <a href="https://github.com/f12-lab/kalinethunter-rootless-and-kex" target="_blank">
-                    <button class="project-button">Acceder al Repositorio</button>
-                </a>
+            <h2>Experiencia</h2>
+
+            <!-- Project Cards -->
+            <h2>Proyectos</h2>
+            <!-- Proyecto 1 -->
+            <div class="project-card" data-target="details-1">
+                <div class="project-header">NetHunter rootless guide</div>
+                <div class="project-description">Guía para instalar y configurar Kali NetHunter en Android usando Termux, sin necesidad de root.</div>
+                <div id="details-1" class="project-details">
+                    <hr>
+                    <p><strong>Objetivo del Proyecto:</strong> Facilitar la instalación y configuración de Kali Linux en Android mediante Termux, permitiendo su uso sin modificar el sistema operativo principal.</p>
+
+                    <p><strong>Características Principales:</strong></p>
+                    <ul>
+                        <li>Acceso completo al entorno Kali Linux en dispositivos Android.</li>
+                        <li>Instalación simple usando Termux y configuración gráfica con NetHunter KeX.</li>
+                        <li>Solución a problemas como configuración de DNS, cierre automático de apps en Android 12/13, y habilitación de audio en GUI.</li>
+                    </ul>
+                    
+                    <p><strong>Pasos Clave:</strong></p>
+                    <ol>
+                        <li><b>Instalación de Termux:</b> Descarga desde F-Droid y ejecuta <code>pkg update</code> para actualizar paquetes.</li>
+                        <li><b>Instalación de NetHunter:</b> Descarga y ejecuta el script oficial con permisos adecuados.</li>
+                        <li><b>Configuración GUI:</b> Usa NetHunter KeX para establecer una conexión gráfica tras configurar la contraseña con <code>nethunter kex passwd</code>.</li>
+                        <li><b>Solución de problemas:</b> 
+                            <ul>
+                                <li>DNS: Editar <code>/etc/resolv.conf</code> con <code>8.8.8.8</code>.</li>
+                                <li>Cierres automáticos: Desactivar el "Phantom Process Killer" en Android 12/13 usando comandos <code>adb</code>.</li>
+                                <li>Sonido: Configurar PulseAudio en Termux para habilitar audio.</li>
+                                <li>Firefox: Ajustar sandbox desde <code>about:config</code>.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <p><strong>Licencia:</strong> Licencia GNU</p>
+                    <p><strong>Autor:</strong> F12-Lab</p>
+                    <a href="https://github.com/f12-lab/kalinethunter-rootless-and-kex" target="_blank">
+                        <button class="project-button">Acceder al Repositorio</button>
+                    </a>
+                </div>
             </div>
-        </div>
-        
-        <div class="project-card" data-target="details-2">
-            <div class="project-header">self-hosting-with-ionos</div>
-            <div class="project-description">En este proyecto se explica la creación de esta página web</div>
-            <div id="details-2" class="project-details">
-                <hr>
-                <p><strong>Objetivo del Proyecto:</strong> Desarrollar una página web para experimentar con diversas tecnologías y protocolos, fomentando el aprendizaje. Este proyecto tiene sus raíces en el grado superior y ha evolucionado progresivamente.</p>
-                
-                <p><strong>Estado Actual:</strong></p>
-                <ul>
-                    <li>El proyecto originalmente utilizaba tecnologías como Apache2, Vagrant, Ansible y contaba con una sección de monitoreo mediante Grafana, Prometheus y Apache Exporter.</li>
-                    <li>Se ha migrado a un entorno más moderno con NGINX y Docker, proporcionando mayor eficacia y flexibilidad.</li>
-                    <li>La sección de monitoreo ha sido eliminada temporalmente por problemas de configuración y falta de tiempo, aunque podría ser reintroducida en el futuro.</li>
-                </ul>
-                
-                <p><strong>Adiciones Recientes:</strong></p>
-                <ul>
-                    <li>Implementación de un servidor de streaming en desarrollo, el cual será gestionado mediante un bot de Telegram que permitirá enviar URLs para ver contenido en streaming. Actualmente está en fases tempranas y requiere perfeccionamiento.</li>
-                    <li>Introducción de una nueva sección llamada <strong>Inferno</strong>, vinculada al proyecto final de grado.</li>
-                </ul>
-                
-                <p><strong>Detalles de la Sección Inferno:</strong></p>
-                <ul>
-                    <li>Temática basada en "La Divina Comedia".</li>
-                    <li>Consta de siete máquinas vulnerables, cada una asociada a un pecado capital.</li>
-                    <li>Las vulnerabilidades serán diseñadas de forma que reflejen la conexión con el pecado correspondiente.</li>
-                    <li>El proyecto incluirá las imágenes Docker de las máquinas vulnerables (.tar) para descarga directa.</li>
-                    <li>Actualmente, la estética está casi completa, quedando pendiente la adición de contenido y ajustes para mejorar la usabilidad.</li>
-                </ul>
+            <!-- Proyecto 2 -->
+            <div class="project-card" data-target="details-2">
+                <div class="project-header">self-hosting-with-ionos</div>
+                <div class="project-description">En este proyecto se explica la creación de esta página web</div>
+                <div id="details-2" class="project-details">
+                    <hr>
+                    <p><strong>Objetivo del Proyecto:</strong> Desarrollar una página web para experimentar con diversas tecnologías y protocolos, fomentando el aprendizaje. Este proyecto tiene sus raíces en el grado superior y ha evolucionado progresivamente.</p>
+                    
+                    <p><strong>Estado Actual:</strong></p>
+                    <ul>
+                        <li>El proyecto originalmente utilizaba tecnologías como Apache2, Vagrant, Ansible y contaba con una sección de monitoreo mediante Grafana, Prometheus y Apache Exporter.</li>
+                        <li>Se ha migrado a un entorno más moderno con NGINX y Docker, proporcionando mayor eficacia y flexibilidad.</li>
+                        <!-- <li>La sección de monitoreo ha sido eliminada temporalmente por problemas de configuración y falta de tiempo, aunque podría ser reintroducida en el futuro.</li> -->
+                    </ul>
+                    
+                    <p><strong>Adiciones Recientes:</strong></p>
+                    <ul>
+                        <li>Creación de la carpeta Herramientas, donde se encuentran diversos proyectos realizados durante el grado superior.</li>
+                    </ul>
+                    
+                    <p><strong>Sección Inferno:</strong></p>
+                    <ul>
+                        <li>La idea principal de este proyecto, es enseñar unas bases fundamentales sobre los vectores de ataque más conocidos, donde se aprende a realizarlos y a mitigarlos.</li>
+                        <li>Temática basada en "La Divina Comedia".</li>
+                        <li>Consta de siete máquinas vulnerables, cada una asociada a un pecado capital.</li>
+                        <li>Cada una posee un tipo distinto de vulnerabilidad y se explica detalladamente cómo iniciarlas y llevarlas a cabo mediante una guía.</li>
+                        <li>La pirámide es el autodeploy, y los cubos los archivos .tar para descargar el contenido.</li>
+                    </ul>
 
-                <p><strong>Licencia:</strong> Licencia GNU</p>
-                <p><strong>Autor:</strong> F12-Lab</p>
-                <a href="https://github.com/f12-lab/self-hosting-with-ionos" target="_blank">
-                    <button class="project-button">Acceder al Repositorio</button>
-                </a>
+                    <p><strong>Sección Herramientas:</strong></p>
+                    <ul>
+                        <li>Se han agrupado todas las herramientas en una misma "carpeta".</li>
+                        <li>Actualmente están disponibles: Shortener, FondoStreaming, FondoRadio.</li>
+                    </ul>
+
+                    <p><strong>Licencia:</strong> Licencia GNU</p>
+                    <p><strong>Autor:</strong> F12-Lab</p>
+                    <a href="https://github.com/f12-lab/self-hosting-with-ionos" target="_blank">
+                        <button class="project-button">Acceder al Repositorio</button>
+                    </a>
+                </div>
             </div>
+            <!-- Proyecto 3 -->
+            <div class="project-card" data-target="details-3">
+                <div class="project-header">Proyecto Inferno</div>
+                <div class="project-description">Proyecto final de grado ASIR</div>
+                <div id="details-3" class="project-details">
+                    <hr>
+                    <p><strong>Objetivo del Proyecto:</strong> Crear una sección en mi página para proveer de máquinas vulnerables, al estilo HTB.</p>
+                    
+                    <p><strong>Inferno:</strong></p>
+                    <ul>
+                        <li>Mi propósito es enseñar a cualquier persona las vulnerabilidades más comunes que existen, cómo realizarlas y cómo mitigarlas, dentro de un entorno seguro.</li>
+                        <li>La temática se basa en "La Divina Comedia". Consta de siete máquinas vulnerables, cada una asociada a un pecado capital.</li>
+                        <li>Cada una posee un tipo distinto de vulnerabilidad y se explica detalladamente cómo iniciarlas y llevarlas a cabo mediante una guía.</li>
+                        <li>La pirámide es el autodeploy, y los cubos los archivos .tar para descargar el contenido.</li>
+                        <li>Todo el contenido se encuentra disponible en la sección <strong>Inferno</strong></li>
+                    </ul>
+
+                    <p><strong>Licencia:</strong> Licencia Apache</p>
+                    <p><strong>Autor:</strong> F12-Lab</p>
+                    <a href="https://github.com/f12-lab/proyecto-inferno" target="_blank">
+                        <button class="project-button">Acceder al Repositorio</button>
+                    </a>
+                </div>
+            </div>       
         </div>
     </div>
 

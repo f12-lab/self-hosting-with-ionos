@@ -1,11 +1,10 @@
 /* General Styles */
 html, body {
-    height: 100%; /* Asegura que html y body ocupen toda la altura del viewport */
+    height: 100%; /* Asegura que html y body ocupen toda la altura del viewport en todos los navegadores*/
     margin: 0;
     padding: 0;
 }
 
-/* Hacemos que body sea un contenedor flexible */
 body {
     font-family: 'Courier New', Courier, monospace;
     background-color: #000;
@@ -14,11 +13,11 @@ body {
     font-size: 18px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
+    min-height: 100vh; /* altura mínima de la pantalla */
+    margin: 0;
 }
 
-/* Contenedor principal que ocupa el espacio restante */
+/* Contenedor principal */
 .container {
     flex: 1;
     width: 80%;
@@ -123,6 +122,7 @@ body {
 .project-card.active .project-details {
     display: block;
 }
+
 /*button*/
 .project-button {
     background-color: black;
@@ -148,9 +148,9 @@ body {
 }
 
 hr {
-    border: none; /* Elimina el borde predeterminado */
-    height: 2px;  /* Ajusta el grosor */
-    background-color: #00ff00; /* Cambia el color (verde en este caso) */
+    border: none; 
+    height: 2px; 
+    background-color: #00ff00; 
 }
 
 /* Accordion (pestañas) */
@@ -178,27 +178,27 @@ hr {
     height: 60px;                 /* Fija una altura para las pestañas */
 }
 
-/* Colores asociados a cada pecado */
+    /* Colores asociados a cada pecado */
 .accordion.lust:hover {
     background-color: #850885; /* Lujuria - morado oscuro */
 }
 .accordion.gluttony:hover {
-    background-color: #cc5992; /* Gula - rosa más oscuro */
+    background-color: #cc5992; /* Gula - rosa */
 }
 .accordion.greed:hover {
     background-color: #8e6f00; /* Avaricia - dorado oscuro */
 }
 .accordion.sloth:hover {
-    background-color: #595959; /* Pereza - gris más oscuro */
+    background-color: #595959; /* Pereza - gris */
 }
 .accordion.anger:hover {
-    background-color: #870f0f; /* Ira - rojo fuego oscuro */
+    background-color: #870f0f; /* Ira - rojo oscuro */
 }
 .accordion.envy:hover {
-    background-color: #316a19; /* Envidia - verde más oscuro */
+    background-color: #316a19; /* Envidia - verde oscuro */
 }
 .accordion.pride:hover {
-    background-color: #113d56; /* Soberbia - azul aún más oscuro */
+    background-color: #113d56; /* Soberbia - azul oscuro */
 }
 
 .panel {
@@ -241,6 +241,8 @@ hr {
     border-top: 2px solid #00ff00;
     text-align: center;
     width: 100%;
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+    position: relative; /* Para que no flote fuera del flujo */
 }
 
 /* Canvas background */
@@ -254,8 +256,8 @@ canvas {
     z-index: -1;
 }
 
-/* img */
-.content img {
+    /* img */
+.content img:not(.tool-item img) {
     width: 50%;
     max-width: 500px;
     height: auto;
@@ -296,13 +298,13 @@ canvas {
     color: #00ff00;
 }
 
-/* Efecto en el ícono al pasar el ratón */
+    /* Efecto en el ícono al pasar el ratón */
 .return-button:hover .exit-icon img {
     transform: translateX(10px);  /* Mover el muñeco a la derecha */
     filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.8));
 }
 
-/* Estilo del botón al pasar el ratón */
+    /* Estilo del botón al pasar el ratón */
 .return-button:hover {
     background-color: #000;
     color: #00ff00;
@@ -372,7 +374,7 @@ form button:hover {
     transform: rotateX(-15deg);
     transform-style: preserve-3d;
     animation: rotation 15s linear infinite;
-    margin: 40px auto; /* Centrado en la página */
+    margin: 40px auto;
     cursor: pointer;
 }
 
@@ -395,13 +397,13 @@ form button:hover {
                 inset 0 0 25px 10px #32cd32,
                 inset 0 0 30px 14px #7fff00,
                 inset 0 0 0 1em #00ff00,
-                0 0 10px rgba(0, 255, 0, 0.7),   /* Resplandor verde */
+                0 0 10px rgba(0, 255, 0, 0.7),
                 0 0 20px rgba(0, 204, 0, 0.7), 
                 0 0 30px rgba(50, 205, 50, 0.6), 
                 0 0 45px rgba(127, 255, 0, 0.4);
 }
 
-/* Posiciones 3D para cada cara */
+    /* Posiciones 3D para cada cara */
 .front {
     transform: translateZ(1em);
 }
@@ -474,4 +476,90 @@ form button:hover {
     transform: rotateX(90deg) translateZ(-25px);
     filter:blur(5px);
     box-shadow: 0 0 100px var(--light-green);
+}
+
+/*POPUPS*/
+    /* Estilo general del popup */
+.tools-popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+    /* Contenido del popup */
+.popup-content {
+    background-color: #000;
+    color: #00ff00;
+    border-radius: 0;
+    border: 2px solid #00ff00;
+    padding: 30px 40px;
+    width: 60%;
+    max-width: 700px;
+    margin: 10% auto;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    font-family: 'Courier New', monospace;
+}
+
+    /* Botón de cierre */
+.close-popup {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #00ff00;
+}
+
+    /* Lista de herramientas */
+.tools-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+    /* Elemento individual de herramienta */
+.tool-item {
+    text-align: center;
+}
+
+    /*Enlaces*/
+.tool-item a {
+    color: #00ff00;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+}
+
+    /* Imagen de herramienta */
+.tool-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+    /* Texto debajo de la imagen */
+.tool-item p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+}
+
+    /* Efecto hover en la imagen */
+.tool-item:hover img {
+    transform: scale(1.1);
+}
+
+    /* Animación */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
