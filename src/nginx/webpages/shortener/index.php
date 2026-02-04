@@ -24,7 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Shortener - Fondomarcador.com</title>
-    <link rel="stylesheet" href="../CSS/all.css">
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../CSS/form.css">
+    <link rel="stylesheet" href="../CSS/message.css">
     <link rel="icon" type="image/x-icon" href="../.favicon/logo2.ico">
 </head>
 <body>
@@ -63,6 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>&copy; 2025 Fondomarcador.com | All rights reserved.</p>
     </div>
     
-    <script src="../Java/index.js"></script>
+    <script src="../JavaScript/index.js"></script>
 </body>
 </html>

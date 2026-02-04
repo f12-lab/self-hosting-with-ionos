@@ -1,0 +1,169 @@
+/* General Styles */
+html, body {
+    height: 100%; /* Asegura que html y body ocupen toda la altura del viewport en todos los navegadores*/
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000;
+    color: #00ff00;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* altura mínima de la pantalla */
+    margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+    flex: 1;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background-color: #000;
+    border: 2px solid #00ff00;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 3px 3px 5px rgba(0, 255, 0, 0.2);
+}
+
+.header h1 {
+    font-size: 36px;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+}
+
+/* Content */
+.content {
+    background-color: #000;
+    border: 2px solid #00ff00;
+    padding: 30px;
+    margin: 20px 0;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+.content p {
+    font-size: 20px;
+    color: #00ff00;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.button-container {
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #00ff00;
+    color: #000;
+    border: 2px solid #00ff00;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    color: #00ff00;
+    background-color: #000;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+/* Footer */
+.footer {
+    background-color: #000;
+    color: #00ff00;
+    padding: 10px;
+    font-size: 14px;
+    border-top: 2px solid #00ff00;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+    position: relative; /* Para que no flote fuera del flujo */
+}
+
+/* Canvas background */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #111;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* img */
+.content img:not(.tool-item img) {
+    width: 50%;
+    max-width: 500px;
+    height: auto;
+    margin-top: 20px;
+    border: 3px solid #00ff00;
+}
+
+.return-button {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 10px;
+    background-color: #00ff00;
+    border: 2px solid #00ff00;
+    border-radius: 0;
+
+    text-decoration: none;
+    box-shadow: 0 0 6px rgba(0, 255, 0, 0.8);
+    z-index: 100;
+
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exit-text {
+    font-size: clamp(0.85rem, 1vw, 1.05rem);
+    font-weight: bold;
+    color: #000;
+    white-space: nowrap;
+}
+
+.exit-icon img {
+    width: clamp(20px, 2vw, 26px);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Estilo para el texto EXIT */
+@media (hover: hover) {
+
+    .return-button:hover {
+        background-color: #000;
+        color: #00ff00;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.9);
+    }
+
+    /* Estilo del botón al pasar el ratón */
+    .return-button:hover .exit-text {
+        color: #00ff00;
+    }
+
+    /* Efecto en el ícono al pasar el ratón */
+    .return-button:hover .exit-icon img {
+        transform: translateX(6px);
+        filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.8));
+    }
+}

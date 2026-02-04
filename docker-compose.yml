@@ -4,6 +4,7 @@ services:
     build:
       context: scripts/dyndns
     container_name: dyndns
+    restart: unless-stopped
     networks:
       - default
 
@@ -21,6 +22,7 @@ services:
       - dyndns
     volumes:
       - ./src/nginx/webpages/videos/hls:/var/www/webpages/videos/hls
+    restart: unless-stopped
     networks:
       - default
 
@@ -28,6 +30,7 @@ services:
   php-fpm:
     image: php:8.2-fpm
     container_name: php-fpm
+    restart: unless-stopped
     networks:
       - default
 
@@ -43,6 +46,7 @@ services:
       - ICECAST_ADMIN_PASSWORD=hackme
       - ICECAST_PASSWORD=hackme
       - ICECAST_HOSTNAME=icecast
+    restart: unless-stopped
     networks:
       - default
 
@@ -56,6 +60,7 @@ services:
     volumes:
       - ./config/icecast/ices2/ices-playlist.xml:/etc/ices2/ices-playlist.xml
       - ./config/icecast/mymusic:/songs
+    restart: unless-stopped    
     networks:
       - default
 
@@ -67,6 +72,7 @@ services:
     volumes:
       - ./src/nginx/webpages/videos/hls:/videos
       - ./config/icecast/mymusic:/songs
+    restart: unless-stopped    
     networks:
       - default
 

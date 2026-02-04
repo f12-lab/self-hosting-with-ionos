@@ -1,0 +1,86 @@
+
+/*POPUPS*/
+    /* Estilo general del popup */
+.tools-popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+    /* Contenido del popup */
+.popup-content {
+    background-color: #000;
+    color: #00ff00;
+    border-radius: 0;
+    border: 2px solid #00ff00;
+    padding: 30px 40px;
+    width: 60%;
+    max-width: 700px;
+    margin: 10% auto;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    font-family: 'Courier New', monospace;
+}
+
+    /* Botón de cierre */
+.close-popup {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #00ff00;
+}
+
+    /* Lista de herramientas */
+.tools-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+    /* Elemento individual de herramienta */
+.tool-item {
+    text-align: center;
+}
+
+    /*Enlaces*/
+.tool-item a {
+    color: #00ff00;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+}
+
+    /* Imagen de herramienta */
+.tool-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+    /* Texto debajo de la imagen */
+.tool-item p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+}
+
+    /* Efecto hover en la imagen */
+.tool-item:hover img {
+    transform: scale(1.1);
+}
+
+    /* Animación */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

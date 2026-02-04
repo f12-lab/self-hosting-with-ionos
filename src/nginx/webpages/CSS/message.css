@@ -1,0 +1,21 @@
+/* Message Styles */
+.message a{
+    color: #00ff00;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.message a:visited {
+    color: #070707;
+    text-shadow: 0 0 8px #00ff00;
+}
+
+.message a:hover, .message a:focus {
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+    color: #00ff00;
+}
+
+.message a.no-visited:visited {
+    color: #00ff00 !important;
+    text-shadow: none !important;
+}
