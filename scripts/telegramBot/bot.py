@@ -43,7 +43,7 @@ async def receive_url_v(update: Update, context: CallbackContext) -> int:
             else:
                 await update.message.reply_text("Streaming started but no stream link available.")
         else:
-            await update.message.reply_text("Error while starting the streaming.")
+            await update.message.reply_text(f"Backend error: {response.status_code} - {response.text}")
     except Exception as e:
         await update.message.reply_text(f"Error: {str(e)}")
 

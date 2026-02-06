@@ -23,8 +23,11 @@ def process_stream():
         # Descargar el video con yt-dlp
         ydl_opts = {
             'outtmpl': os.path.join(DOWNLOAD_DIR, '%(title)s.%(ext)s'),
-            'format': 'bestvideo+bestaudio/best',  # Selecciona mejor calidad
-            'merge_output_format': 'mp4',  # Fuerza la salida como .mp4
+            'format': 'best',
+            'noplaylist': True,
+            'http_headers': {
+                'User-Agent': 'Mozilla/5.0'
+            }
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             result = ydl.extract_info(url, download=True)
@@ -59,4 +62,4 @@ def process_stream():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)

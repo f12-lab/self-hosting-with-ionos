@@ -1,57 +1,24 @@
-/songs/The Jimi Hendrix Experience - All Along The Watchtower (Official Audio).ogg
-/songs/Joan Jett - I Love Rock 'n' Roll.ogg
-/songs/Bon Jovi - You Give Love A Bad Name.ogg
-/songs/Kiss - I Was Made For Lovin' You.ogg
-/songs/Scorpions - Still Loving You (Official Video).ogg
-/songs/The Clash - Should I Stay or Should I Go (Official Video).ogg
-/songs/Call Me.ogg
-/songs/Blondie - ＂One Way Or Another＂ (Audio).ogg
-/songs/The Police - Roxanne (Official Music Video).ogg
-/songs/Rock You Like a Hurricane (2011).ogg
-/songs/The Rolling Stones - Paint It, Black (Official Lyric Video).ogg
-/songs/Led Zeppelin - Black Dog (Official Audio).ogg
-/songs/Led Zeppelin - Immigrant Song (Official Audio).ogg
-/songs/Black Sabbath - Paranoid (Official Audio).ogg
-/songs/Black Sabbath - War Pigs.ogg
-/songs/Blitzkrieg Bop.ogg
-/songs/Entradilla1.ogg
-/songs/Toto - Africa (Official HD Video).ogg
+/songs/La vie en rose.ogg
+/songs/Grover Washington Jr. - Just the Two of Us (feat. Bill Withers) (Official Lyric Video).ogg
+/songs/Daft Punk - The Game of Love (Official Audio).ogg
+/songs/F.R David - Words (Official HD Video).ogg
+/songs/Cyndi Lauper - Time After Time (Official HD Video).ogg
+/songs/The Bangles - Eternal Flame (Official Video).ogg
+/songs/John Waite - Missing You.ogg
+/songs/Roxette - It Must Have Been Love (Official Music Video).ogg
+/songs/Berlin - Take My Breath Away (Official Video - Top Gun).ogg
+/songs/Whitesnake - Is This Love (Official Music Video).ogg
+/songs/Michael Bolton - When a Man Loves a Woman (Official Video).ogg
+/songs/Fleetwood Mac - Everywhere (Official Music Video) [HD].ogg
+/songs/The Cure - Friday I'm In Love.ogg
+/songs/Travis - Sing (Official HD Music Video).ogg
+/songs/The Smiths ㅡ There is a light and it never goes out⧸⧸500 days of summer (Sub Español).ogg
+/songs/Daft Punk - Digital Love (Official Audio).ogg
 /songs/a-ha - Take On Me (Official Video) [4K].ogg
 /songs/Limahl - Never Ending Story (Official Music Video).ogg
-/songs/Cass Elliot - Make Your Own Kind Of Music (Lyric Video).ogg
-/songs/Tears For Fears - Everybody Wants To Rule The World (Official Music Video).ogg
-/songs/Boney M. - Rasputin (Sopot Festival 1979).ogg
-/songs/Elton John - I'm Still Standing.ogg
-/songs/Fools Garden - Lemon Tree (Official HD Video).ogg
-/songs/Pet Shop Boys - West End Girls (Official Video) [HD REMASTERED].ogg
-/songs/Peter Schilling - Major Tom (Coming Home) (Official Video).ogg
-/songs/New Order - Blue Monday (Official Lyric Video).ogg
-/songs/David Bowie – Space Oddity (Official Video).ogg
-/songs/Entradilla2.ogg
-/songs/R.E.M. - Shiny Happy People (Official Music Video).ogg
-/songs/Nirvana - The Man Who Sold The World (MTV Unplugged).ogg
-/songs/Joy Division - Transmission [OFFICIAL MUSIC VIDEO].ogg
-/songs/R.E.M. - Losing My Religion (Official HD Music Video).ogg
-/songs/Nirvana - Smells Like Teen Spirit (Official Music Video).ogg
-/songs/Basket Case - Green Day.ogg
-/songs/There Is a Light That Never Goes Out (2011 Remaster).ogg
-/songs/The Cure - Friday I'm In Love.ogg
-/songs/Entradilla3.ogg
-/songs/Blur - Song 2 (Official Music Video).ogg
-/songs/t.A.T.u. - All The Things She Said (Official Music Video).ogg
-/songs/Evanescence - Bring Me to Life.ogg
-/songs/The Cranberries - Zombie (Official Music Video).ogg
-/songs/Gorillaz - Tomorrow Comes Today (Official Video).ogg
-/songs/The Cardigans - My Favourite Game (Lyric Video).ogg
-/songs/Gnarls Barkley - Crazy.ogg
-/songs/Arctic Monkeys - Do I Wanna Know？ (Official Video).ogg
-/songs/Gotye - Somebody That I Used To Know (feat. Kimbra) [Official Music Video].ogg
-/songs/Modjo - Lady (Hear Me Tonight) (Official Video).ogg
-/songs/Moves Like Jagger - Maroon 5 featuring Christina Aguilera.ogg
-/songs/Blink 182 - All the Small Things (HQ).ogg
-/songs/Franz Ferdinand - Take Me Out (Video).ogg
-/songs/Caesars Palace - Jerk It Out (Official Video).ogg
-/songs/Capital Cities - Safe And Sound.ogg
-/songs/Maldita Nerea - El Secreto de las Tortugas 2010 (Videoclip).ogg
-/songs/Red Hot Chili Peppers - Can't Stop [Official Music Video].ogg
-/songs/Red Hot Chili Peppers - By The Way [Official Music Video].ogg
+/songs/Backstreet Boys - I Want It That Way (Official HD Video).ogg
+/songs/Kiss - I Was Made For Lovin' You.ogg
+/songs/George Michael - Careless Whisper (Official Video).ogg
+/songs/The Police - Every Breath You Take (Official Music Video).ogg
+/songs/Roxette - Listen To Your Heart (Official Music Video).ogg
+/songs/I Just Called To Say I Love You.ogg
